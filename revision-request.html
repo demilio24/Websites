@@ -493,9 +493,19 @@
       <!-- EMAIL -->
       <div class="card">
         <p class="email-intro">
-          Before getting started, please enter the email<br />address associated
-          with your account.
+          Before getting started, please fill in your account details.
         </p>
+        <div class="field">
+          <label>Website Domain <span class="req">*</span></label>
+          <input
+            type="text"
+            id="domain-input"
+            placeholder="e.g. yourwebsite.com"
+          />
+          <p class="field-hint" style="text-align: center">
+            Enter the domain of the website you want revised.
+          </p>
+        </div>
         <div class="field">
           <label>Email <span class="req">*</span></label>
           <input type="email" id="email-input" placeholder="your@email.com" />
@@ -825,7 +835,10 @@
           "update that",
           "fix that",
         ];
+
+        const domain = document.getElementById("domain-input");
         const email = document.getElementById("email-input");
+        if (!chk(domain)) ok = false;
         if (!chk(email)) ok = false;
 
         if (activeTypes.has("text")) {
@@ -869,40 +882,118 @@
         }
         err.style.display = "none";
 
+        // ── Collect all revisions ──────────────────────────────────────────
         const textRevisions = [
           ...document.querySelectorAll("#text-blocks .revision-block"),
         ].map((b, i) => ({
-          index: i + 1,
-          currentText: b.querySelector(".cur-text").value.trim(),
-          replacementText: b.querySelector(".rep-text").value.trim(),
-          notes: b.querySelector(".block-notes").value.trim() || null,
+          revision_number: i + 1,
+          type: "text",
+          current_text: b.querySelector(".cur-text").value.trim(),
+          replacement_text: b.querySelector(".rep-text").value.trim(),
+          notes: b.querySelector(".block-notes").value.trim() || "",
         }));
+
         const imageRevisions = [
           ...document.querySelectorAll("#image-blocks .revision-block"),
         ].map((b, i) => ({
-          index: i + 1,
-          currentImageUrl: b.querySelector(".cur-img").value.trim(),
-          newImageUrl: b.querySelector(".rep-img").value.trim(),
-          notes: b.querySelector(".block-notes").value.trim() || null,
+          revision_number: i + 1,
+          type: "image",
+          current_image_url: b.querySelector(".cur-img").value.trim(),
+          new_image_url: b.querySelector(".rep-img").value.trim(),
+          notes: b.querySelector(".block-notes").value.trim() || "",
         }));
+
         const videoRevisions = [
           ...document.querySelectorAll("#video-blocks .revision-block"),
         ].map((b, i) => ({
-          index: i + 1,
-          currentVideoUrl: b.querySelector(".cur-vid").value.trim(),
-          newVideoUrl: b.querySelector(".rep-vid").value.trim(),
-          notes: b.querySelector(".block-notes").value.trim() || null,
+          revision_number: i + 1,
+          type: "video",
+          current_video_url: b.querySelector(".cur-vid").value.trim(),
+          new_video_url: b.querySelector(".rep-vid").value.trim(),
+          notes: b.querySelector(".block-notes").value.trim() || "",
         }));
 
+        // ── Build a single flat human-readable summary string for ClickUp ──
+        // Map this one field to your ClickUp task description — done.
+        const lines = [];
+        const domainVal = domain.value.trim();
+        const emailVal = email.value.trim();
+        const generalNotes = document
+          .getElementById("extra-notes")
+          .value.trim();
+        const submittedAt = new Date().toLocaleString("en-US", {
+          timeZone: "America/New_York",
+          dateStyle: "medium",
+          timeStyle: "short",
+        });
+
+        lines.push(`REVISION REQUEST`);
+        lines.push(`Submitted: ${submittedAt}`);
+        lines.push(`Domain: ${domainVal}`);
+        lines.push(`Email: ${emailVal}`);
+        if (generalNotes) lines.push(`General Notes: ${generalNotes}`);
+        lines.push("");
+
+        let globalIndex = 1;
+
+        textRevisions.forEach((r) => {
+          lines.push(`--- REVISION ${globalIndex} (Text) ---`);
+          lines.push(`CURRENT TEXT:`);
+          lines.push(r.current_text);
+          lines.push(`REPLACE WITH:`);
+          lines.push(r.replacement_text);
+          if (r.notes) lines.push(`Notes: ${r.notes}`);
+          lines.push("");
+          globalIndex++;
+        });
+
+        imageRevisions.forEach((r) => {
+          lines.push(`--- REVISION ${globalIndex} (Image) ---`);
+          lines.push(`CURRENT IMAGE URL: ${r.current_image_url}`);
+          lines.push(`NEW IMAGE URL: ${r.new_image_url}`);
+          if (r.notes) lines.push(`Notes: ${r.notes}`);
+          lines.push("");
+          globalIndex++;
+        });
+
+        videoRevisions.forEach((r) => {
+          lines.push(`--- REVISION ${globalIndex} (Video) ---`);
+          lines.push(`CURRENT VIDEO URL: ${r.current_video_url}`);
+          lines.push(`NEW VIDEO URL: ${r.new_video_url}`);
+          if (r.notes) lines.push(`Notes: ${r.notes}`);
+          lines.push("");
+          globalIndex++;
+        });
+
+        const revisions_summary = lines.join("\n");
+        const total_revisions =
+          textRevisions.length + imageRevisions.length + videoRevisions.length;
+
+        // ── Final payload ──────────────────────────────────────────────────
+        // Top-level flat fields  = map once each in GHL/ClickUp, never touch again.
+        // revisions_summary      = paste into ClickUp task description field, done.
+        // revision arrays        = structured data if you ever need it in automations.
         const payload = {
-          submittedAt: new Date().toISOString(),
-          email: email.value.trim(),
-          generalNotes:
-            document.getElementById("extra-notes").value.trim() || null,
-          revisionTypes: [...activeTypes],
-          textRevisions,
-          imageRevisions,
-          videoRevisions,
+          // Identity
+          domain: domainVal,
+          email: emailVal,
+          submitted_at: new Date().toISOString(),
+          general_notes: generalNotes || "",
+
+          // Summary counts
+          total_revisions,
+          total_text_revisions: textRevisions.length,
+          total_image_revisions: imageRevisions.length,
+          total_video_revisions: videoRevisions.length,
+          revision_types: [...activeTypes].join(", "),
+
+          // ONE field to paste into ClickUp task description — contains everything
+          revisions_summary,
+
+          // Structured arrays (for advanced automations)
+          text_revisions: textRevisions,
+          image_revisions: imageRevisions,
+          video_revisions: videoRevisions,
         };
 
         const btn = document.getElementById("submit-btn");
