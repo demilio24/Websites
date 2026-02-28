@@ -1122,6 +1122,10 @@
           return;
         }
         document.getElementById(id)?.remove();
+        const label = type.charAt(0).toUpperCase() + type.slice(1);
+        c.querySelectorAll(".block-num").forEach((el, i) => {
+          el.textContent = `${label} Revision #${i + 1}`;
+        });
       }
 
       function chk(el) {
