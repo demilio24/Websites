@@ -1068,6 +1068,18 @@
           <label>Describe everything we need to build it <span class="req">*</span></label>
           <textarea rows="5" class="add-description" placeholder="Include ALL content: names, job titles, text, photo URLs, button links, etc. Write it all out. Do not reference other elements or say 'similar to X.'"></textarea>
           <p class="field-hint">We copy exactly what you write here. Missing content = request rejected.</p>
+        </div>
+        <div class="field">
+          <label>Media file <em style="font-weight:400;color:var(--muted)">(optional — upload an image or video to include)</em></label>
+          <input type="hidden" class="add-media-url">
+          <div class="upload-zone">
+            <label class="upload-trigger-zone">
+              <input type="file" accept="image/*,video/mp4,video/mpeg,video/*" onchange="uploadMediaFile(this,'add-media-url')">
+              📁 Upload image or video
+            </label>
+            <p class="upload-zone-limit">JPG, PNG, GIF, WebP, MP4, MPEG · 5 MB max</p>
+            <span class="upload-status"></span>
+          </div>
         </div>`;
         } else if (type === "deletion") {
           fields = `
@@ -1308,6 +1320,7 @@
           element_type: b.querySelector(".add-type").value.trim(),
           location: b.querySelector(".add-location").value.trim(),
           description: b.querySelector(".add-description").value.trim(),
+          media_url: b.querySelector(".add-media-url").value.trim() || "",
           notes: b.querySelector(".block-notes").value.trim() || "",
         }));
 
@@ -1379,6 +1392,7 @@
           lines.push(`WHERE: ${r.location}`);
           lines.push(`DETAILS:`);
           lines.push(r.description);
+          if (r.media_url) lines.push(`Media: ${r.media_url}`);
           if (r.notes) lines.push(`Notes: ${r.notes}`);
           lines.push("");
           globalIndex++;
