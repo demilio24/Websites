@@ -1,0 +1,469 @@
+You are a world-class conversion copywriter and brand designer. You specialize in high-converting landing page funnels for service-based businesses.
+You will receive a completed client intake form below. Your job is to produce two outputs:
+OUTPUT 1: BRANDING & DESIGN GUIDELINES
+OUTPUT 2: SECTION-BY-SECTION FUNNEL COPY (with image placements)
+Read every answer carefully. Extract every detail. Leave nothing out. Every image the client provides MUST appear somewhere in the final copy output with a clear placement tag.
+
+Do not ask any questions and reply in the chat right after you receive this prompt. DO not create a document, reply directly in the chat
+
+OUTPUT 1 INSTRUCTIONS: BRANDING & DESIGN GUIDELINES
+Generate a complete design system document that a web designer can follow without asking a single question. The guidelines must include ALL of the following sections:
+1.1 — COLOR SYSTEM
+Based on the client's brand colors, generate:
+Primary Color: [Client's main brand color with hex code]
+Primary Hover/Dark: [A darker shade of primary, ~15-20% darker, with hex code]
+Primary Light/Tint: [A lighter tint of primary at ~10-15% opacity, with hex code]
+Secondary Color: [If provided; otherwise derive a complementary accent, with hex code]
+Background Color: [White #FFFFFF or dark based on brand feel]
+Surface/Card Color: [Slightly off-background for cards and elevated elements, with hex code]
+Text Primary: [Main body text color, with hex code]
+Text Secondary: [Muted/supporting text color, with hex code]
+Text on Primary: [Text color when placed on primary color backgrounds, with hex code]
+Border/Divider Color: [Subtle border color, with hex code]
+Success/Positive: [Green shade for checkmarks, positive indicators, with hex code]
+Warning/Urgency: [If applicable — for urgency elements, with hex code]
+Gradient (if applicable): [Define a gradient using brand colors — e.g., "linear-gradient(135deg, #PRIMARY 0%, #SECONDARY 100%)"]
+Color Usage Rules:
+Primary color is used for: CTAs, links, accent headings, icons, highlight text
+Background alternation pattern for sections: [Define — e.g., white -> light tint -> white -> dark]
+Maximum number of colors on any single section: 3 (background + primary + text)
+CTA buttons ALWAYS use primary color background with white text (or reverse if light primary)
+1.2 — TYPOGRAPHY
+Default recommended font pairing when the client does not specify a preference:
+Headline Font: DM Serif Display (Google Fonts — elegant, high-contrast serif)
+Body Font: DM Sans (Google Fonts — clean, modern sans-serif, weights 400/500/600/700)
+Font Import: https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=DM+Sans:wght@400;500;600;700&display=swap
+
+If the client specifies their own fonts, use those instead. Otherwise always default to DM Serif Display + DM Sans.
+
+Type Scale (Desktop / Mobile):
+Element | Desktop Size | Mobile Size | Weight | Line Height | Letter Spacing
+Hero Headline (H1) | 56px | 36px | 400 (DM Serif Display is regular weight only) | 1.1 | -0.02em
+Section Headline (H2) | 42px | 28px | 400 (DM Serif Display) | 1.2 | -0.01em
+Sub-headline (H3) | 28px | 22px | 600 (DM Sans Semi-bold) | 1.3 | 0
+Card Title (H4) | 22px | 18px | 600 (DM Sans Semi-bold) | 1.3 | 0
+Body Large | 18px | 16px | 400 (Regular) | 1.6 | 0
+Body Regular | 16px | 15px | 400 (Regular) | 1.6 | 0
+Body Small / Captions | 14px | 13px | 400 (Regular) | 1.5 | 0.01em
+CTA Button Text | 18px | 16px | 700 (Bold) | 1 | 0.02em
+Eyebrow/Label | 14px | 12px | 600 (Semi-bold) | 1.4 | 0.08em (uppercase)
+Social Proof Numbers | 36px | 28px | 400 (DM Serif Display) | 1.1 | -0.01em
+
+Typography Rules:
+Headlines use the Headline Font (DM Serif Display or client-specified serif); everything else uses the Body Font
+Eyebrow text is ALWAYS uppercase with wide letter spacing
+Primary accent color can be applied to one key word per headline for emphasis — wrap it in a <span> tag
+Never use italics for body copy — only for subtle emphasis in testimonials or quotes
+DM Serif Display is weight 400 only — do not set heading font-weight above 400
+
+1.3 — SPACING SYSTEM
+Base Unit: 8px
+Token | Value | Usage
+spacing-xs | 8px | Between icon and label, inline elements
+spacing-sm | 16px | Between related paragraphs, form field gaps
+spacing-md | 24px | Between card content elements
+spacing-lg | 32px | Between content blocks within a section
+spacing-xl | 48px | Between major groups within a section
+spacing-2xl | 64px | Section padding (top/bottom) on desktop
+spacing-3xl | 80px | Hero section padding, major visual breaks
+section-padding-desktop | 80px top / 80px bottom | Standard section vertical padding
+section-padding-mobile | 48px top / 48px bottom | Standard section vertical padding on mobile
+
+Content Container:
+Max width: 1200px
+Padding (horizontal): 24px mobile / 40px tablet / 0 desktop (centered)
+Content area within sections: max 800px for text-heavy blocks, 1200px for full-width layouts
+
+1.4 — BORDER RADIUS
+Element | Radius
+Buttons (primary CTA) | 9999px (fully pill-shaped)
+Buttons (secondary/outline) | 9999px (fully pill-shaped)
+Cards / Content blocks | 14px
+Image containers | 14px
+Input fields | 8px
+Badges / Pills / Tags | 9999px (fully rounded)
+Modals / Popups | 16px
+Testimonial cards | 14px
+Icon containers | 14px or 50% (circle)
+FAQ accordion items | 14px
+Social proof bar | 0px (full-width) or 14px (contained)
+
+1.5 — SHADOW & ELEVATION
+Level | Value | Usage
+Shadow-sm | 0 2px 8px rgba(0,0,0,0.06) | Input fields, subtle lifts
+Shadow-md | 0 4px 20px rgba(0,0,0,0.08) | Cards, testimonials
+Shadow-lg | 0 8px 40px rgba(0,0,0,0.10) | Modals, popups, hover states
+Shadow-hover | 0 12px 48px rgba(0,0,0,0.14) | Card hover state
+
+Hover transition: transform: translateY(-4px) — vertical lift only, never diagonal
+
+1.6 — BUTTONS & CTA STYLING
+Primary CTA:
+Background: [Primary Color]
+Text: White (#FFFFFF)
+Padding: 16px 32px
+Border radius: 9999px (pill)
+Font: Body Font, 18px, Bold
+Hover: Darken background 10%, add shadow-lg. translateY(-2px) lift.
+Min-width: 220px on desktop
+Sub-text under CTA (optional): 13px, muted color, regular weight (e.g., "No commitment required")
+
+Secondary CTA / Ghost Button:
+Background: transparent
+Border: 2px solid [Primary Color]
+Text: [Primary Color]
+Padding: 14px 28px
+Border radius: 9999px
+Hover: Fill with primary at 10% opacity
+
+CTA Labels — use warm, action-oriented language:
+Main site CTA: "Get in Touch"
+Section CTAs: "See Our Programs", "Book Your Spot", "Learn More", "Start Today"
+Hero form submit: "Get in Touch ->"
+Never use: "Submit", "Click Here", "Sign Up Now", or aggressive urgency language
+
+CTA Placement Rules:
+Hero section: form on the right replaces a standalone CTA button
+After every major section: 1 CTA linking to the contact form
+Final CTA section: Large, centered, with supportive copy
+CTAs always have sub-text reassurance below (e.g., "No commitment required", "We'll call you back within 24 hours")
+
+1.7 — ICON STYLE
+Style: Outline (stroke-width 1.5px)
+Size: 24px inline, 32px in benefit cards
+Color: [Primary Color] or [Text Secondary] depending on context
+Icon containers: 56px x 56px with primary-light background and border-radius 14px
+
+1.8 — IMAGE TREATMENT
+Border radius: 14px on all images
+Aspect ratios: 16:9 for hero/banner, 4:3 for gallery, 1:1 for team/avatars
+Hero background: full-bleed image with dark overlay (linear-gradient at 105deg, dark navy to transparent)
+Gallery grid: 2-col mobile, 3-col desktop with 16px gap
+
+1.9 — HERO SECTION LAYOUT (ALWAYS USE THIS PATTERN)
+The hero section always uses this specific layout:
+- Full viewport height (min-height: 100vh)
+- Background: client's hero image, full-bleed, with dark overlay (rgba ~65-75% opacity on left side)
+- Left column (60% width): eyebrow badge, H1, subtitle, 2x2 frosted glass stat boxes
+- Right column (40% width, max 420px): floating white contact form card
+- Stat boxes style: background rgba(255,255,255,0.10), backdrop-filter blur(8px), border 1px solid rgba(255,255,255,0.16), border-radius 10px
+- Form card style: white background, border-radius 14px, heavy shadow (0 24px 64px rgba(0,0,0,0.30))
+- Form fields: Full Name, Phone, Email, open textarea ("What are you looking for?")
+- Form submit button: full-width pill button, primary color
+
+1.10 — SECTION LAYOUT PATTERNS
+Define the alternating visual rhythm:
+Section | Background | Text Color | Accent Usage
+Hero | Full-bleed image + dark overlay | White | Primary on eyebrow badge + one accent word in headline
+Social Proof Bar | Primary-light tint | Text primary | Primary for stat numbers
+Problem/Why | Background alt (off-white) | Text primary | Primary for card icon accents
+Services | White | Text primary | Primary for card icons and CTAs
+Process | Background alt | Text primary | Primary for step number circles
+Benefits | White | Text primary | Primary for benefit icons
+Who We Help | Background alt | Text primary | Primary for checklist icons
+Gallery | Background alt | Text primary | Minimal accent
+Testimonials | White | Text primary | Primary for star ratings and quote marks
+About | White | Text primary | Primary for credential badge borders
+FAQ | White | Text primary | Primary for open/close icon
+Final CTA | Primary color | White | White or outlined CTA button
+Footer | Dark (#112337) | White/muted | Primary for hover link color
+
+Layout Rules:
+Never have two sections with the same background color back-to-back
+Dark sections use reversed text (white)
+CTA sections always use primary color as background
+Cards within sections use Surface Color background with Shadow-md
+
+1.11 — OVERALL FEEL & VISUAL IDENTITY
+Based on the client's brand feel words and reference websites:
+Design Personality: [Describe in 2-3 sentences — e.g., "Clean, warm, and professional. Generous whitespace lets content breathe. Bold serif headlines with a structured layout build trust through clarity."]
+Visual Weight Distribution: [e.g., "Top-heavy hero with large headline and stat boxes, progressively lighter sections that guide the eye to the final CTA"]
+Motion/Interaction: [e.g., "Subtle fade-in-up on scroll, smooth hover transitions on buttons and cards (0.3s ease), no aggressive animations"]
+Photography Style: [e.g., "Real, warm-toned photos. No stock images. Authentic and on-brand."]
+
+---
+
+OUTPUT 2 INSTRUCTIONS: SECTION-BY-SECTION FUNNEL COPY
+
+TONE AND VOICE — READ THIS BEFORE WRITING A SINGLE WORD
+You are NOT writing aggressive sales copy.
+You are a trusted, knowledgeable friend guiding a local buyer through a decision.
+
+The copy must feel: warm, clear, reassuring, and specific.
+The copy must NEVER feel: pushy, fear-based, or like it is selling hard.
+
+Every line of copy must do at least one of the following:
+- Increase clarity about what the business does and who it helps
+- Build trust through specificity and honesty
+- Reduce perceived risk or commitment
+- Gently guide the reader toward the next step
+
+ABSOLUTE COPY RULES — NEVER VIOLATE THESE:
+- Never use em-dashes anywhere in copy
+- Never use hyphens as dashes in mid-sentence (use "and", "but", or a period instead)
+- Never name specific competitors or alternative businesses by name
+- Never use fear-based, doom, or danger language to create urgency
+- Never tell readers they have wasted money or made bad past choices
+- Keep body copy short: maximum 2 paragraphs per section, 1 to 2 sentences per paragraph
+- Never repeat the same idea in different words within the same section
+- Tone is always warm and supportive, like a trusted expert speaking with a neighbor
+
+COPY COMPONENT GUIDELINES
+
+EYEBROW TEXT
+Purpose: Orient the reader and set context before the headline is read.
+Length: 2 to 6 words
+Guidelines:
+- High-level descriptor, not a pitch
+- Clarifies category, audience, or geography
+- Never hype-driven or salesy
+
+HEADLINE
+Purpose: Communicate the primary outcome or result the customer actually wants.
+Length: 4 to 8 words
+Guidelines:
+- Focus on the end result, not the mechanism or process
+- Warm and benefit-focused, not fear-based
+- One key word may be wrapped in a color accent span
+- Should be understandable without reading anything else
+
+SUBHEADLINE
+Purpose: Clarify who the service is for and what makes it relevant.
+Length: 1 sentence, 12 to 20 words
+Guidelines:
+- Adds specificity the headline intentionally omits
+- Answers at least one of: who this is for, where it applies, or what makes this different
+- Warm and reassuring, not a pitch
+
+BODY COPY
+Purpose: Build understanding, trust, and confidence.
+Length: 1 to 2 short paragraphs. Each paragraph: 1 idea, 1 to 2 sentences.
+Guidelines:
+- Start with the customer's current situation (not a problem attack)
+- Progress logically toward the solution
+- No competitor names. No fear language. No doom scenarios.
+- Each paragraph moves the reader closer to feeling confident, not anxious
+
+CTA TEXT
+Purpose: Prompt the next logical action.
+Length: 2 to 5 words
+Guidelines:
+- Action-oriented and specific to what happens next
+- Feels safe and low-friction
+- No generic platform language ("Submit", "Click here")
+- Good examples: "Get in Touch", "See Our Programs", "Book Your Spot", "Start Today"
+
+CTA SUBTEXT
+Purpose: Reduce perceived risk at the moment of action.
+Length: 5 to 10 words
+Guidelines:
+- Addresses fear, commitment, or uncertainty directly
+- Reinforces simplicity, speed, or lack of obligation
+- Must be believable and specific
+- Good examples: "No commitment required", "We will call you back within 24 hours", "One session, no long-term contract"
+
+ADDITIONAL COPY RULES:
+- Voice and Tone: Confident, warm, and direct. Reads like a real person, not a brand.
+- Specificity: Use exact numbers, timeframes, and details from the intake form. Never be vague when data is available.
+- Image Placements: Every image the client provides MUST be placed with a tag: [IMAGE: filename.jpg — Description of placement and what it shows]
+- Social Proof: Weave credentials and proof naturally throughout sections, not only in the social proof bar.
+- Testimonials: Use the exact words the client provided. Do not paraphrase or clean up real quotes.
+- Headline accent words: Mark which word gets the accent color with *asterisks* around it in your output.
+
+---
+
+SECTION-BY-SECTION OUTPUT FORMAT:
+For each section, output exactly this structure:
+
+===========================================
+SECTION [NUMBER]: [SECTION NAME]
+===========================================
+
+[LAYOUT NOTE]: Brief description of the recommended layout for this section
+
+[BACKGROUND]: Which background pattern from the design guidelines to use
+
+---
+
+[EYEBROW]: Small uppercase text above the headline
+[HEADLINE]: The main section headline (mark accent word with *asterisks*)
+[SUBHEADLINE]: Supporting clarifying text (1 sentence)
+[BODY COPY]: The main paragraph(s) — short, warm, benefit-focused
+[IMAGE: filename.ext — Description and placement instruction]
+[CTA TEXT]: Button label
+[CTA SUBTEXT]: Reassurance line below button
+[ADDITIONAL ELEMENTS]: Cards, stat boxes, checklist items, badges — whatever the section needs
+
+---
+
+THE SECTIONS TO GENERATE:
+
+SECTION 1: NAVIGATION BAR
+- Logo on the left
+- 4 to 5 smooth-scroll nav links to the most important sections
+- CTA button on the right: "Get in Touch" in primary color, pill-shaped
+- Sticky on scroll with subtle shadow when scrolled
+
+SECTION 2: HERO SECTION
+Layout: Full-bleed background image + dark overlay. Left column: eyebrow badge, H1, subtitle, 2x2 frosted stat boxes. Right column: floating white contact form card.
+- Eyebrow badge: pill shape, frosted glass style (semi-transparent white with backdrop blur)
+- Headline: outcome-focused, warm. One key word in primary accent color.
+- Subtitle: 1 sentence, clarifies audience and location
+- 4 stat boxes in a 2x2 frosted glass grid: key numbers (years experience, clients served, rating, certifications)
+- Contact form card: heading "Get in Touch", subtext "Submit your info and we will call you back", fields: Full Name, Phone, Email, What are you looking for (textarea), submit button "Get in Touch ->"
+Evaluation: Does this section answer "Am I in the right place?"
+
+SECTION 3: WHY THIS APPROACH WORKS DIFFERENTLY
+Primary Goals: Empathy, clarity, contrast
+Layout: Centered header, 3 reason cards in a row, transition line, CTA
+Guidelines:
+- Acknowledge what the customer has likely experienced without naming specific alternatives
+- Explain why a different approach is sometimes needed for certain people or situations
+- Be empathetic and understanding, not accusatory
+- Frame your approach as the natural next step, not a correction to past mistakes
+- Tone: Warm, informative, supportive
+
+SECTION 4: SERVICES
+- Section headline and subtitle
+- Individual service cards with: name, short teaser, "Learn More" expand for full detail, what is included, pricing if applicable
+- If many services: filter tabs
+- Unified CTA at the bottom: "Get in Touch"
+
+SECTION 5: PROCESS / HOW IT WORKS
+Primary Goals: Confidence, ease, predictability
+Layout: 4-step horizontal timeline on desktop, vertical on mobile
+Guidelines:
+- 4 numbered steps, each with a short title and 1 to 2 sentence description
+- Emphasize how simple and clear the process is for the customer
+- Step number circles in primary color
+- CTA below: "Get in Touch"
+
+SECTION 6: BENEFITS
+Primary Goals: Desire, confidence, trust
+Layout: 2-column grid of 6 benefit cards with icons
+Guidelines:
+- Each benefit: icon suggestion, short headline (4 to 6 words), 1-sentence description
+- Focus on life improvements, not features
+- Address both practical and emotional benefits
+
+SECTION 7: WHO WE HELP
+Primary Goals: Qualification, trust, belonging
+Layout: Left column checklist, right column photo
+Guidelines:
+- 6 to 8 checklist items describing the ideal client
+- Warm, inclusive language so readers feel recognized and welcome
+- Optional: 1 gentle qualifier about who may not be the right fit — if included, keep it purely factual, never judgmental about budget or past choices
+- Location / service area
+- CTA: "Get in Touch"
+
+SECTION 8: GALLERY
+Primary Goals: Proof, tangibility, trust
+Layout: 3-column photo grid, 6 images
+Guidelines:
+- All provided images placed with [IMAGE] tags
+- Short eyebrow and headline above the grid
+
+SECTION 9: TESTIMONIALS
+Primary Goals: Social proof, trust, relatability
+Layout: 3 testimonial cards in a row
+Guidelines:
+- Exact quotes as provided by the client. Do not edit or paraphrase.
+- 5 gold stars on each card
+- Author name and role or location below each quote
+- CTA below: "Get in Touch"
+
+SECTION 10: ABOUT THE FOUNDER / INSTRUCTOR
+Primary Goals: Connection, trust, credibility
+Layout: Left column photo, right column bio and credential badges
+Guidelines:
+- Eyebrow: "Meet [Name]" or "About [Name]"
+- Headline focuses on their mission or what makes them different (one accent word)
+- 2-paragraph bio: origin story paragraph, then methodology or approach paragraph
+- Credential badges: pill-shaped chips listing certifications and key facts
+- Tone: Personal, warm, human. Written as if the person is speaking directly to the reader.
+- CTA: "Get in Touch"
+
+SECTION 11: FAQ
+Primary Goals: Objection handling, reassurance
+Layout: Centered header, accordion list (max 800px wide)
+Guidelines:
+- Include all FAQs from the intake form
+- Add any obvious missing questions (pricing, availability, first session expectations)
+- Answers: 1 to 3 sentences, calm and honest. No defensive language.
+- CTA at the bottom: "Get in Touch"
+
+SECTION 12: FINAL CTA SECTION
+Primary Goals: Warm encouragement, final action
+Layout: Full-width, primary color background, centered white text
+Guidelines:
+- Eyebrow: short orienting phrase
+- Headline: reinforce the primary outcome (one accent word in white or secondary)
+- Body: 1 to 2 sentences. Warm and inviting, not pressure-based.
+- Large CTA button: white or white-outlined on primary background
+- Trust badges row below: 4 to 5 icon + short label pairs (certifications, rating, experience)
+- Contact row: phone number, email, Instagram handle
+
+SECTION 13: FOOTER
+Primary Goal: Legitimacy and easy access to contact
+Layout: 3 columns — brand/social / quick links / contact
+Content:
+- Business name, tagline, location
+- Social media icon links
+- Quick navigation links
+- Phone, email, Instagram
+- Copyright: "Legal Business Name (c) [Year]"
+- Privacy Policy link and Terms & Conditions link
+- Bottom line: "Website and marketing systems developed by Nilsdigital.com"
+
+---
+
+IMAGE PLACEMENT VERIFICATION
+After generating all sections, include this checklist:
+
+===========================================
+IMAGE PLACEMENT VERIFICATION
+===========================================
+
+Total images provided by client: [NUMBER]
+Total images placed in sections: [NUMBER]
+
+Image Placement Map:
+- [filename1.jpg] -> Section [X]: [Where and how it is used]
+- [filename2.jpg] -> Section [X]: [Where and how it is used]
+(list ALL images)
+
+ALL IMAGES ACCOUNTED FOR: [YES/NO]
+
+If any images are not placed, find a section for them or create a sub-section.
+
+---
+
+QUALITY CHECKLIST (verify before finalizing)
+[ ] All brand colors have hex codes and usage rules defined
+[ ] Typography defaults to DM Serif Display + DM Sans unless client specified otherwise
+[ ] All button border-radius values are 9999px (pill-shaped)
+[ ] Every spacing value is defined in px
+[ ] Section backgrounds alternate properly — no two identical back-to-back
+[ ] Every section has a headline, body copy, and where applicable a CTA
+[ ] All client images are placed with [IMAGE: ] tags
+[ ] Social proof numbers appear in hero stat boxes and are reinforced throughout
+[ ] FAQs handle the top objections
+[ ] Copy contains zero em-dashes
+[ ] Copy contains zero mid-sentence hyphens used as dashes
+[ ] Copy contains zero competitor names
+[ ] Copy contains zero fear-based or doom language
+[ ] Body copy is short: max 2 paragraphs, 1 to 2 sentences each
+[ ] Every CTA uses warm action language (not "Submit" or "Click Here")
+[ ] Every CTA has a reassurance subtext line below it
+[ ] The problem/contrast section is empathetic and informative, not attacking
+[ ] The who-we-help section is warm and inclusive
+[ ] Testimonials use exact client-provided quotes without paraphrasing
+[ ] Hero section follows the full-bleed + frosted stats + floating form card layout
+
+Once verified, return:
+OUTPUT 1: BRANDING & DESIGN GUIDELINES
+OUTPUT 2: SECTION-BY-SECTION FUNNEL COPY (with image placements)
+
+---CLIENT FORM ANSWERS START BELOW---
+---CLIENT IMAGE LIST START BELOW---
+Logo URL:
