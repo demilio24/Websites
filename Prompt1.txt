@@ -59,10 +59,11 @@ MODERN FRIENDLY / STARTUP / CREATIVE / YOUTHFUL
   Best for: creative agencies, photography, events, personal brands, lifestyle businesses
 
 CLEAN MEDICAL / HEALTH / WELLNESS / MINIMAL
-  Headline: Nunito (bold 700 or extra-bold 800)
-  Body: Nunito (weights 400/600/700)
-  Import: https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap
-  Best for: health, therapy, counseling, pediatrics, dental, functional medicine
+  Headline: Outfit (semi-bold 600 or bold 700)
+  Body: Outfit (weights 400/500/600/700)
+  Import: https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&display=swap
+  Best for: health, therapy, counseling, pediatrics, dental, functional medicine, clinics
+  Note: Outfit has a clean geometric feel similar to Google Sans — modern, legible, neutral
 
 State your chosen pairing clearly at the top of OUTPUT 1 like this:
   Font Pairing Selected: [Headline Font] + [Body Font]
@@ -86,7 +87,7 @@ Headlines use the chosen Headline Font; everything else uses the Body Font
 Eyebrow text is ALWAYS uppercase with wide letter spacing
 Primary accent color can be applied to one key word per headline for emphasis — wrap it in a <span> tag
 Never use italics for body copy — only for subtle emphasis in testimonials or quotes
-If using DM Serif Display, heading font-weight must be 400 (it has no other weights)
+If using DM Serif Display, heading font-weight must be 400 — it has no other weights available
 
 1.3 — SPACING SYSTEM
 Base Unit: 8px
