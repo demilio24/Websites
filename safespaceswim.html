@@ -74,16 +74,16 @@
       --container-width: 1200px;
       --section-padding: var(--space-3xl) 1.5rem;
 
-      /* Effects — ducks2water: large radius, offset shadows */
-      --radius-sm: 8px;
-      --radius-md: 16px;
-      --radius-lg: 24px;
-      --radius-xl: 32px;
+      /* Effects */
+      --radius-sm: 6px;
+      --radius-md: 10px;
+      --radius-lg: 14px;
+      --radius-xl: 20px;
       --radius-full: 9999px;
-      --shadow-sm: 3px 3px 0 rgba(0,0,0,0.07);
-      --shadow-md: 5px 5px 0 rgba(0,0,0,0.09);
-      --shadow-lg: 8px 8px 0 rgba(0,0,0,0.10);
-      --shadow-hover: 10px 10px 0 rgba(0,0,0,0.12);
+      --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+      --shadow-hover: 0 12px 48px rgba(0,0,0,0.14);
       --transition-fast: all 0.2s ease;
       --transition-base: all 0.3s ease;
       --transition-slow: all 0.5s ease;
@@ -305,7 +305,7 @@
       border: 1.5px solid var(--color-border);
       transition: var(--transition-base);
     }
-    .card:hover { transform: translateY(-3px) translateX(-2px); box-shadow: var(--shadow-hover); }
+    .card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .card-icon {
       width: 64px;
       height: 64px;
@@ -367,10 +367,10 @@
       right: 0;
       z-index: 1000;
       background: var(--color-white);
-      border-bottom: 2px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
       transition: var(--transition-base);
     }
-    .nav.scrolled { box-shadow: 0 4px 0 var(--color-border); }
+    .nav.scrolled { box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
     .nav-inner {
       display: flex;
       align-items: center;
@@ -568,28 +568,7 @@
     @media (max-width: 768px) { .wave-divider svg { height: 44px; } }
 
     /* ---- Premium Effects ---- */
-    /* Gradient headline */
-    .gradient-text {
-      background: linear-gradient(135deg, var(--color-primary) 0%, #7ECEE8 50%, var(--color-primary-dark) 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      background-size: 200% auto;
-      animation: gradient-shift 4s ease-in-out infinite alternate;
-    }
-    @keyframes gradient-shift {
-      from { background-position: 0% 50%; }
-      to { background-position: 100% 50%; }
-    }
-    /* Stacked premium shadows */
-    .shadow-premium {
-      box-shadow:
-        3px 3px 0 rgba(61,158,200,0.15),
-        6px 6px 0 rgba(61,158,200,0.10),
-        10px 10px 20px rgba(0,0,0,0.08);
-    }
-    /* Glowing icon */
-    .icon-glow { filter: drop-shadow(0 0 8px rgba(61,158,200,0.5)); }
+    .gradient-text { color: var(--color-accent); }
     /* Counter stat numbers */
     .stat-number[data-target] { transition: none; }
 
@@ -609,7 +588,7 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
       aspect-ratio: 4 / 3;
-      border: 2px solid var(--color-border);
+      border: 1px solid var(--color-border);
     }
     .hero-image-wrap img { width: 100%; height: 100%; object-fit: cover; }
     .hero-headline { margin-bottom: var(--space-sm); }
@@ -632,8 +611,8 @@
     .proof-bar {
       background: var(--color-primary-light);
       padding: var(--space-xl) 0;
-      border-top: 2px solid var(--color-border);
-      border-bottom: 2px solid var(--color-border);
+      border-top: 1px solid var(--color-border);
+      border-bottom: 1px solid var(--color-border);
     }
     .proof-stats {
       display: grid;
@@ -671,11 +650,10 @@
       border-radius: var(--radius-lg);
       padding: var(--space-lg);
       box-shadow: var(--shadow-md);
-      border: 2px solid var(--color-border);
-      border-top: 4px solid var(--color-primary);
+      border: 1px solid var(--color-border);
       transition: var(--transition-base);
     }
-    .problem-card:hover { transform: translateY(-3px) translateX(-2px); box-shadow: var(--shadow-hover); }
+    .problem-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .problem-card-icon { color: var(--color-primary); margin-bottom: var(--space-sm); }
     .problem-card-icon svg { width: 36px; height: 36px; }
     .problem-card h4 { margin-bottom: var(--space-xs); font-size: var(--font-size-xl); }
@@ -718,12 +696,12 @@
       border-radius: var(--radius-lg);
       padding: var(--space-lg);
       box-shadow: var(--shadow-md);
-      border: 2px solid var(--color-border);
+      border: 1px solid var(--color-border);
       display: flex;
       flex-direction: column;
       transition: var(--transition-base);
     }
-    .service-card:hover { transform: translateY(-3px) translateX(-2px); box-shadow: var(--shadow-hover); }
+    .service-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .service-teaser { color: var(--color-text-light); font-size: var(--font-size-sm); margin: var(--space-sm) 0; flex: 1; line-height: 1.6; }
     .service-toggle {
       background: none;
@@ -809,7 +787,7 @@
       width: 64px;
       height: 64px;
       border-radius: var(--radius-full);
-      background: var(--color-accent);
+      background: var(--color-primary);
       color: var(--color-white);
       display: flex;
       align-items: center;
@@ -819,8 +797,7 @@
       font-weight: 900;
       margin-bottom: var(--space-md);
       flex-shrink: 0;
-      box-shadow: 4px 4px 0 rgba(0,0,0,0.12);
-      border: 2.5px solid var(--color-text);
+      box-shadow: var(--shadow-md);
     }
     .step-title { font-family: var(--font-heading); font-size: var(--font-size-xl); color: var(--color-text); margin-bottom: var(--space-xs); font-weight: 800; }
     .step-desc { font-size: var(--font-size-sm); color: var(--color-text-light); line-height: 1.6; }
@@ -847,10 +824,10 @@
       border-radius: var(--radius-lg);
       padding: var(--space-lg);
       box-shadow: var(--shadow-md);
-      border: 2px solid var(--color-border);
+      border: 1px solid var(--color-border);
       transition: var(--transition-base);
     }
-    .benefit-card:hover { transform: translateY(-3px) translateX(-2px); box-shadow: var(--shadow-hover); }
+    .benefit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .benefit-icon {
       width: 56px;
       height: 56px;
@@ -882,7 +859,7 @@
       line-height: 1.5;
     }
     .checklist-icon { width: 22px; height: 22px; min-width: 22px; color: var(--color-primary); margin-top: 1px; }
-    .who-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 2px solid var(--color-border); }
+    .who-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--color-border); }
     .who-image img { width: 100%; height: 520px; object-fit: cover; }
     .qualifier-box {
       background: var(--color-primary-light);
@@ -905,10 +882,10 @@
       overflow: hidden;
       aspect-ratio: 4 / 3;
       box-shadow: var(--shadow-md);
-      border: 2px solid var(--color-border);
+      border: 1px solid var(--color-border);
       transition: var(--transition-base);
     }
-    .gallery-item:hover { transform: translateY(-3px) translateX(-2px); box-shadow: var(--shadow-hover); }
+    .gallery-item:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
 
     /* ---- Testimonials ---- */
@@ -920,13 +897,13 @@
     }
     .testimonial-card {
       background: var(--color-white);
-      border: 2px solid var(--color-border);
+      border: 1px solid var(--color-border);
       border-radius: var(--radius-lg);
       padding: var(--space-lg);
       box-shadow: var(--shadow-md);
       transition: var(--transition-base);
     }
-    .testimonial-card:hover { transform: translateY(-3px) translateX(-2px); box-shadow: var(--shadow-hover); }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
     .testimonial-stars {
       display: flex;
       gap: 3px;
@@ -961,7 +938,7 @@
       gap: var(--space-2xl);
       align-items: center;
     }
-    .about-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 2px solid var(--color-border); }
+    .about-image { border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); border: 1px solid var(--color-border); }
     .about-image img { width: 100%; height: 600px; object-fit: cover; object-position: top center; }
     .about-body { font-size: var(--font-size-base); color: var(--color-text-light); line-height: 1.7; margin-bottom: var(--space-md); }
     .about-body p { margin-bottom: 0.875rem; }
@@ -1161,18 +1138,12 @@
         <div>
           <span class="eyebrow animate-on-scroll">San Diego's Private Swim Instructor</span>
           <h1 class="hero-headline animate-on-scroll delay-1">
-            Your Child Will Learn to Swim —<br>
-            Or Your <span class="gradient-text">Money Back</span>
+            Swimming Lessons Children Love<br>and Parents <span class="gradient-text">Trust</span>
           </h1>
           <p class="hero-sub animate-on-scroll delay-2">
             Safe Space Swim offers private one-on-one swimming lessons for children and adults across San Diego County — with real results from the very first lesson.
           </p>
-          <div class="hero-body animate-on-scroll delay-3">
-            <p>Most swim schools have overcrowded group classes, rotating teenage instructors, and a curriculum that stays the same no matter how your child is doing. After months of lessons and hundreds of dollars spent, your child is still afraid to put their face in the water.</p>
-            <p>Coach Maria has spent 11 years doing the opposite. Every lesson is completely private, tailored to your child's exact level, and built on a proven progression system that has worked for hundreds of San Diego kids — from water-shy beginners all the way to swim team ready.</p>
-            <p>If your child hasn't made real progress yet, it's not their fault. They just haven't had the right coach.</p>
-          </div>
-          <div class="btn-wrap animate-on-scroll delay-4">
+          <div class="btn-wrap animate-on-scroll delay-3">
             <a href="#contact" class="btn btn-primary btn-lg">Book Your First Lesson Today</a>
             <span class="btn-subtext">One class, zero commitment. You'll see results or we make it right.</span>
           </div>
@@ -1244,28 +1215,14 @@
     <div class="container">
 
       <div class="section-header">
-        <span class="eyebrow animate-on-scroll">Sound Familiar?</span>
-        <h2 class="section-title animate-on-scroll delay-1">You've Already Tried the Other Options.<br>Here's Why They Didn't Work.</h2>
-        <p class="section-subtitle animate-on-scroll delay-2">Group swim schools, rotating instructors, and cheap community classes all promise progress. They rarely deliver it.</p>
+        <span class="eyebrow animate-on-scroll">Why Private Lessons Make the Difference</span>
+        <h2 class="section-title animate-on-scroll delay-1">Every Child Learns Differently.<br>Your Lessons Should Too.</h2>
+        <p class="section-subtitle animate-on-scroll delay-2">Group classes are a great starting point for some kids — but for children who need extra patience, or anyone working through water anxiety, one-on-one instruction changes everything.</p>
       </div>
 
       <div class="problem-body text-center animate-on-scroll">
-        <p>You signed your child up at the YMCA, or maybe the British Swim School, or a local community class. You dropped them off week after week, paid the monthly fees, and waited. And waited. Months later, your child was still clinging to the wall, still nervous, still not swimming.</p>
-        <p>The problem isn't your child. The problem is the system. Group classes mean one instructor watching 8 kids at once. The teenage instructors change every few weeks with no continuity, no tracking, and no real investment in your child's individual growth. When your child falls behind, nobody notices.</p>
-        <p>For adults, it's even harder. Walking into a group beginner class as a grown adult is intimidating. Being rushed through a curriculum that wasn't designed for someone with real water anxiety only makes it worse. Most people quit before they ever feel comfortable.</p>
-      </div>
-
-      <div class="problem-image-wrap animate-on-scroll">
-        <img
-          src="https://assets.cdn.filesafe.space/BUCKET_ID/media/69a3abd9167da4cbea8d4c2b.jpg"
-          alt="Child with floatation device at pool edge — the old way of learning"
-          loading="lazy"
-        >
-      </div>
-
-      <div class="problem-body text-center animate-on-scroll">
-        <p>And if nobody in your family learns to swim? You spend every pool party on edge. You avoid beach trips. You hold your breath every time your kids are near water — because you know that if something happened, you might not be able to help.</p>
-        <p>The longer you wait, the harder the fear becomes to break. The older a child gets without learning, the more the anxiety compounds. And for adults — every year without this skill is another year your family is at risk near water.</p>
+        <p>In a group setting, the curriculum moves at the group's pace — not your child's. When your child needs a little more time on a particular skill, or a different approach entirely, a group class simply can't stop and adjust. Private lessons can.</p>
+        <p>For adults learning to swim later in life, the private setting removes the pressure of performing in front of others. You set the pace. Coach Maria meets you exactly where you are — no rushing, no comparison, just clear and steady progress forward.</p>
       </div>
 
       <div class="problem-cards">
@@ -1670,10 +1627,6 @@
             </div>
           </div>
 
-          <div class="qualifier-box">
-            <p>We are probably not the right match if you are primarily looking for the cheapest option available. Our program is a premium private coaching experience. If your goal is simply to check a box and sign up for the most affordable group class in the area, there are other options for that. But if you want your child to actually learn — and to love the water — we would love to work with you.</p>
-          </div>
-
           <div class="btn-wrap mt-lg">
             <a href="#contact" class="btn btn-primary btn-lg">Find Out If We Have a Spot for You</a>
             <span class="btn-subtext">Spaces are limited — especially at in-demand morning and weekend times.</span>
@@ -1807,10 +1760,8 @@
           <h2 class="section-title">11 Years. Hundreds of Students.<br>One Unwavering Mission.</h2>
           <p class="mt-sm text-light-color">Coach Maria isn't just a swim instructor. She's the coach your child will actually want to come back to.</p>
           <div class="about-body mt-md">
-            <p>Maria started teaching swimming at just 16 years old and quickly realized that group settings couldn't give children what they truly needed: individual attention, consistent feedback, and a coach who truly knew them.</p>
-            <p>She swam competitively for San Pasqual High School and has spent the last 11 years refining a private coaching curriculum that has helped hundreds of San Diego kids and adults overcome fear and fall in love with the water. She teaches hundreds of students every year — and she still brings the same passion to every single lesson she gives.</p>
-            <p>Her approach is different from the start. Before any arms or legs are introduced, Coach Maria builds buoyancy and flotation first. When a student understands how their body naturally floats, the fear starts to lift. And once the fear is gone, everything else becomes possible.</p>
-            <p>Coach Maria holds her Red Cross Lifeguarding Certificate, WWSI Water Safety Skills certification for all ages, CPR certification for infants and adults, full liability insurance, and all required permits to teach throughout San Diego County. She also speaks Spanish — because great coaching should never have a language barrier.</p>
+            <p>Maria started teaching at 16 and has spent the last 11 years building a private coaching curriculum that's helped hundreds of San Diego kids and adults discover a genuine love for the water. Her approach focuses on buoyancy first — because when a student feels how naturally their body floats, the fear starts to lift on its own.</p>
+            <p>Fully certified, insured, and bilingual (English &amp; Spanish), Coach Maria brings the same care and enthusiasm to every single lesson. She swam competitively herself and knows firsthand what good coaching looks and feels like.</p>
           </div>
           <div class="credential-badges">
             <span class="credential-badge">Red Cross Lifeguarding (2019)</span>
@@ -1972,10 +1923,8 @@
       <p class="section-subtitle animate-on-scroll delay-2">Join the hundreds of San Diego families who found the right coach — and never looked back.</p>
 
       <div class="text-narrow animate-on-scroll delay-2">
-        <p>You have spent enough time wondering if there is a better option. There is.</p>
-        <p>Safe Space Swim has helped hundreds of children overcome fear, develop real water safety skills, and grow into confident swimmers — all through private, personalized lessons with a coach who has spent 11 years refining exactly how to make this happen.</p>
-        <p>One trial class. No pressure. No long-term commitment. Just show up — and see what your child is truly capable of.</p>
-        <p>We live in beautiful San Diego, surrounded by water, pools, and ocean. Your child deserves to feel safe and free in it.</p>
+        <p>Private lessons with Coach Maria are tailored to your child's exact level — with real, visible progress from the very first session.</p>
+        <p>Try one lesson. No long-term commitment required. Just show up and see what's possible.</p>
       </div>
 
       <div class="btn-wrap btn-wrap-center mt-xl animate-on-scroll delay-3">
