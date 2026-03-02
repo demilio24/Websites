@@ -48,21 +48,21 @@
        ============================================ */
       :root {
         /* Colors */
-        --color-primary: #9fc8da;
-        --color-primary-dark: #6aaabf;
-        --color-primary-light: #eaf4f8;
+        --color-primary: #1a7fa6;
+        --color-primary-dark: #125e7c;
+        --color-primary-light: #d4eef7;
         --color-accent: #f4a940;
         --color-accent-dark: #d48a2e;
         --color-background: #ffffff;
-        --color-background-alt: #f5fbfd;
-        --color-text: #1a2e3b;
-        --color-text-light: #6b8a99;
+        --color-background-alt: #edf6fb;
+        --color-text: #0f2333;
+        --color-text-light: #4a7080;
         --color-white: #ffffff;
         --color-black: #000000;
-        --color-border: #d9edf4;
+        --color-border: #c3dfe9;
         --color-stars: #ffd45d;
         --color-success: #4caf87;
-        --color-footer: #112337;
+        --color-footer: #0b1c2b;
 
         /* Typography */
         --font-heading: "Poppins", sans-serif;
@@ -195,6 +195,13 @@
       .text-primary {
         color: var(--color-primary);
       }
+      .highlight {
+        background: var(--color-primary-light);
+        color: var(--color-primary-dark);
+        border-radius: 3px;
+        padding: 0.05em 0.25em;
+        font-weight: 600;
+      }
       .text-light-color {
         color: var(--color-text-light);
       }
@@ -210,10 +217,14 @@
       .section {
         padding: var(--section-padding);
         background: var(--color-background);
+        position: relative;
+        z-index: 1;
       }
       .section-alt {
         padding: var(--section-padding);
         background: var(--color-background-alt);
+        position: relative;
+        z-index: 1;
       }
       /* section-dark repurposed as light-blue — no heavy dark backgrounds */
       .section-dark {
@@ -239,6 +250,30 @@
         padding: var(--section-padding);
         background: var(--color-primary);
         color: var(--color-white);
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+      }
+      .cta-bubble {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.12);
+        pointer-events: none;
+        animation: bubbleFloat 6s ease-in-out infinite;
+      }
+      .cta-bubble:nth-child(1)  { width: 80px;  height: 80px;  top: 10%;  left: 5%;   animation-duration: 7s; animation-delay: 0s; }
+      .cta-bubble:nth-child(2)  { width: 40px;  height: 40px;  top: 60%;  left: 3%;   animation-duration: 5s; animation-delay: 1s; }
+      .cta-bubble:nth-child(3)  { width: 120px; height: 120px; top: 20%;  left: 15%;  animation-duration: 9s; animation-delay: 2s; }
+      .cta-bubble:nth-child(4)  { width: 55px;  height: 55px;  top: 75%;  left: 20%;  animation-duration: 6s; animation-delay: 0.5s; }
+      .cta-bubble:nth-child(5)  { width: 30px;  height: 30px;  top: 40%;  left: 8%;   animation-duration: 8s; animation-delay: 3s; }
+      .cta-bubble:nth-child(6)  { width: 90px;  height: 90px;  top: 10%;  right: 5%;  animation-duration: 7s; animation-delay: 1.5s; }
+      .cta-bubble:nth-child(7)  { width: 45px;  height: 45px;  top: 65%;  right: 3%;  animation-duration: 5s; animation-delay: 0s; }
+      .cta-bubble:nth-child(8)  { width: 110px; height: 110px; top: 25%;  right: 15%; animation-duration: 9s; animation-delay: 2.5s; }
+      .cta-bubble:nth-child(9)  { width: 60px;  height: 60px;  top: 80%;  right: 22%; animation-duration: 6s; animation-delay: 1s; }
+      .cta-bubble:nth-child(10) { width: 35px;  height: 35px;  top: 45%;  right: 7%;  animation-duration: 8s; animation-delay: 3.5s; }
+      @keyframes bubbleFloat {
+        0%, 100% { opacity: 0.10; }
+        50%       { opacity: 0.22; }
       }
       .section-cta h1,
       .section-cta h2,
@@ -420,13 +455,13 @@
       .card-icon {
         width: 64px;
         height: 64px;
-        background: var(--color-primary-light);
+        background: var(--color-primary);
         border-radius: var(--radius-lg);
         display: flex;
         align-items: center;
         justify-content: center;
         margin-bottom: var(--space-md);
-        color: var(--color-primary);
+        color: var(--color-white);
       }
       .card-icon svg {
         width: 32px;
@@ -833,9 +868,10 @@
         display: block;
         overflow: hidden;
         line-height: 0;
+        font-size: 0;
         margin-bottom: -2px;
         position: relative;
-        z-index: 1;
+        z-index: 2;
       }
       /* Hero-to-section wave: overlaps bottom of hero for seamless transition */
       #hero-wave {
@@ -853,15 +889,9 @@
         width: 100%;
         height: 72px;
       }
-      .wave-bg-white {
-        background: var(--color-background);
-      }
-      .wave-bg-alt {
-        background: var(--color-background-alt);
-      }
-      .wave-bg-primary-light {
-        background: var(--color-primary-light);
-      }
+      .wave-bg-white { background: var(--color-background); }
+      .wave-bg-alt { background: var(--color-background-alt); }
+      .wave-bg-primary-light { background: var(--color-primary-light); }
       .wave-fill-white .wave-main {
         fill: var(--color-background);
       }
@@ -875,7 +905,7 @@
         fill: var(--color-primary);
       }
       .wave-secondary {
-        opacity: 0.35;
+        opacity: 0;
       }
       .wave-fill-white .wave-secondary {
         fill: var(--color-background);
@@ -888,6 +918,7 @@
       }
       .wave-fill-primary .wave-secondary {
         fill: var(--color-primary);
+        opacity: 0;
       }
       @media (max-width: 768px) {
         .wave-divider svg {
@@ -899,15 +930,17 @@
       .hero-accent-word {
         background: linear-gradient(
           90deg,
-          var(--color-accent),
-          var(--color-primary),
-          var(--color-accent)
+          #a8dff0,
+          #3ab8e0,
+          #1a7fa6,
+          #5dcfef,
+          #a8dff0
         );
-        background-size: 200% auto;
+        background-size: 300% auto;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
-        animation: gradient-shift 4s linear infinite;
+        animation: gradient-shift 5s linear infinite;
       }
       .hero-form-card.form-highlight {
         animation: formPulse 1.6s ease-out;
@@ -1014,21 +1047,24 @@
         display: block;
         font-family: var(--font-heading);
         font-size: var(--font-size-3xl);
-        color: var(--color-primary);
+        color: #ffffff;
         line-height: 1.1;
         margin-bottom: 0.25rem;
+        font-weight: 700;
+        text-shadow: 0 1px 4px rgba(0,0,0,0.3);
       }
       .hero-stat-label {
         display: block;
         font-size: var(--font-size-xs);
-        color: rgba(255, 255, 255, 0.7);
-        font-weight: 500;
+        color: rgba(255, 255, 255, 0.92);
+        font-weight: 600;
       }
       /* Hero form card */
       .hero-form-card {
         background: var(--color-white);
         border-radius: var(--radius-lg);
-        padding: var(--space-xl) var(--space-lg);
+        padding: 0;
+        overflow: hidden;
         box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
       }
       .hero-form-card h3 {
@@ -1036,12 +1072,19 @@
         color: var(--color-text);
         margin-bottom: 0.25rem;
         text-align: center;
+        padding: var(--space-lg) var(--space-lg) 0;
       }
       .hero-form-card .form-sub {
         color: var(--color-text-light);
         font-size: var(--font-size-sm);
         text-align: center;
-        margin-bottom: var(--space-lg);
+        padding: 0 var(--space-lg);
+        margin: 0;
+      }
+      .hero-form-card .btn-subtext {
+        display: block;
+        padding: 0 var(--space-lg) var(--space-md);
+        text-align: center;
       }
       .form-group {
         margin-bottom: var(--space-sm);
@@ -1349,6 +1392,8 @@
       .wave-bg-ocean { background: #0d2d4a; }
       .wave-fill-ocean .wave-main,
       .wave-fill-ocean .wave-secondary { fill: #0d2d4a; }
+      .wave-bg-footer { background: var(--color-footer); }
+      .wave-fill-footer .wave-main { fill: var(--color-footer); }
       /* Eyebrow pill on dark background */
       #services .eyebrow {
         color: var(--color-primary);
@@ -1651,7 +1696,7 @@
       .about-grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: var(--space-2xl);
+        gap: var(--space-lg);
         align-items: stretch;
       }
       .about-image {
@@ -1659,7 +1704,7 @@
         overflow: hidden;
         box-shadow: var(--shadow-lg);
         border: 1px solid var(--color-border);
-        min-height: 560px;
+        min-height: 320px;
       }
       .about-image img {
         width: 100%;
@@ -1671,14 +1716,14 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        gap: var(--space-lg);
+        gap: var(--space-sm);
       }
       .about-content .eyebrow {
         margin-bottom: 0;
       }
       .about-content .section-title {
-        font-size: clamp(2.25rem, 3.2vw, 3.5rem);
-        line-height: 1.15;
+        font-size: clamp(1.5rem, 2.2vw, 2.25rem);
+        line-height: 1.2;
         margin-bottom: 0;
       }
       .about-intro {
@@ -1715,9 +1760,9 @@
         margin-top: var(--space-lg);
       }
       .credential-badge {
-        background: var(--color-primary-light);
-        color: var(--color-primary-dark);
-        border: 1px solid var(--color-primary);
+        background: var(--color-primary);
+        color: var(--color-white);
+        border: none;
         border-radius: var(--radius-full);
         padding: 0.375rem 1rem;
         font-size: var(--font-size-xs);
@@ -2116,56 +2161,23 @@
             <p class="form-sub">
               Submit your info and we will call you back within 24 hours. <strong>Se habla español.</strong>
             </p>
-            <form name="hero-contact" method="POST">
-              <div class="form-group">
-                <label for="hero-name">Full Name *</label>
-                <input
-                  type="text"
-                  id="hero-name"
-                  name="name"
-                  class="form-control"
-                  placeholder="Your name"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="hero-phone">Phone *</label>
-                <input
-                  type="tel"
-                  id="hero-phone"
-                  name="phone"
-                  class="form-control"
-                  placeholder="(760) 000-0000"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="hero-email">Email *</label>
-                <input
-                  type="email"
-                  id="hero-email"
-                  name="email"
-                  class="form-control"
-                  placeholder="your@email.com"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="hero-message">What are you looking for?</label>
-                <textarea
-                  id="hero-message"
-                  name="message"
-                  class="form-control"
-                  placeholder="Children's lessons, adult lessons, pool party lifeguarding..."
-                ></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary btn-lg form-submit">
-                Get in Touch &rarr;
-              </button>
-              <span class="btn-subtext"
-                >No commitment required. One call, that is all it takes.</span
-              >
-            </form>
+            <iframe
+              src="https://link.nilsdigital.com/widget/form/Glqc8E2muKtZrofFqCJi"
+              style="width:100%;height:509px;border:none;border-radius:3px;display:block;"
+              id="inline-Glqc8E2muKtZrofFqCJi"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Website Form"
+              data-height="509"
+              data-layout-iframe-id="inline-Glqc8E2muKtZrofFqCJi"
+              data-form-id="Glqc8E2muKtZrofFqCJi"
+              title="Website Form"
+            ></iframe>
           </div>
         </div>
         <!-- /hero-grid -->
@@ -2183,11 +2195,11 @@
       >
         <path
           class="wave-secondary"
-          d="M0,55 C200,25 400,72 640,45 C880,18 1100,65 1280,40 C1360,28 1410,50 1440,45 L1440,72 L0,72 Z"
+          d="M0,55 C200,25 400,72 640,45 C880,18 1100,65 1280,40 C1360,28 1410,50 1440,45 L1440,80 L0,80 Z"
         />
         <path
           class="wave-main"
-          d="M0,38 C240,72 480,8 720,42 C960,76 1200,12 1440,38 L1440,72 L0,72 Z"
+          d="M0,38 C240,72 480,8 720,42 C960,76 1200,12 1440,38 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
@@ -2306,20 +2318,20 @@
       >
         <path
           class="wave-secondary"
-          d="M0,45 C180,72 360,15 600,50 C840,85 1080,20 1320,48 C1380,55 1420,40 1440,45 L1440,72 L0,72 Z"
+          d="M0,45 C180,72 360,15 600,50 C840,85 1080,20 1320,48 C1380,55 1420,40 1440,45 L1440,80 L0,80 Z"
         />
         <path
           class="wave-main"
-          d="M0,25 C180,65 480,0 720,35 C960,70 1200,5 1440,32 L1440,72 L0,72 Z"
+          d="M0,25 C180,65 480,0 720,35 C960,70 1200,5 1440,32 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
 
     <!-- ========== SERVICES SECTION START ========== -->
-    <section id="services" class="section">
+    <section id="services" class="section" style="background:#0d2d4a;">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow animate-on-scroll">What We Offer</span>
+          <span class="eyebrow animate-on-scroll" style="color:rgba(255,255,255,0.85);">What We Offer</span>
           <h2 class="section-title animate-on-scroll delay-1">
             Lessons Built Around <span class="text-primary">Your</span> Goals
           </h2>
@@ -2575,11 +2587,11 @@
       >
         <path
           class="wave-secondary"
-          d="M0,55 C240,20 480,70 720,40 C960,10 1200,60 1440,35 L1440,72 L0,72 Z"
+          d="M0,55 C240,20 480,70 720,40 C960,10 1200,60 1440,35 L1440,80 L0,80 Z"
         />
         <path
           class="wave-main"
-          d="M0,35 C320,72 640,8 960,45 C1120,60 1300,20 1440,38 L1440,72 L0,72 Z"
+          d="M0,35 C320,72 640,8 960,45 C1120,60 1300,20 1440,38 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
@@ -2617,7 +2629,7 @@
           </div>
 
           <div class="process-step animate-on-scroll delay-1">
-            <div class="step-number">2</div>
+            <div class="step-number" style="background:var(--color-accent);">2</div>
             <div class="step-body">
               <h3 class="step-title">We Find the Right Pool</h3>
               <p class="step-desc">
@@ -2641,7 +2653,7 @@
           </div>
 
           <div class="process-step animate-on-scroll delay-3">
-            <div class="step-number">4</div>
+            <div class="step-number" style="background:var(--color-accent);">4</div>
             <div class="step-body">
               <h3 class="step-title">Track Progress Together</h3>
               <p class="step-desc">
@@ -2683,11 +2695,11 @@
       >
         <path
           class="wave-secondary"
-          d="M0,40 C360,72 720,15 1080,50 C1200,62 1340,30 1440,42 L1440,72 L0,72 Z"
+          d="M0,40 C360,72 720,15 1080,50 C1200,62 1340,30 1440,42 L1440,80 L0,80 Z"
         />
         <path
           class="wave-main"
-          d="M0,20 C240,60 480,5 720,40 C960,75 1200,10 1440,30 L1440,72 L0,72 Z"
+          d="M0,20 C240,60 480,5 720,40 C960,75 1200,10 1440,30 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
@@ -2866,11 +2878,11 @@
       >
         <path
           class="wave-secondary"
-          d="M0,48 C300,20 600,68 900,38 C1100,18 1300,55 1440,40 L1440,72 L0,72 Z"
+          d="M0,48 C300,20 600,68 900,38 C1100,18 1300,55 1440,40 L1440,80 L0,80 Z"
         />
         <path
           class="wave-main"
-          d="M0,58 C180,30 420,72 660,45 C900,18 1140,65 1440,30 L1440,72 L0,72 Z"
+          d="M0,58 C180,30 420,72 660,45 C900,18 1140,65 1440,30 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
@@ -3096,32 +3108,28 @@
     </section>
     <!-- ========== GALLERY SECTION END ========== -->
 
-    <!-- Wave: alt → white -->
-    <div class="wave-divider wave-bg-alt wave-fill-white" aria-hidden="true">
+    <!-- Wave: alt → footer dark (testimonials) -->
+    <div class="wave-divider wave-bg-alt wave-fill-footer" aria-hidden="true">
       <svg
         viewBox="0 0 1440 72"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          class="wave-secondary"
-          d="M0,30 C360,68 720,5 1080,48 C1240,65 1360,25 1440,40 L1440,72 L0,72 Z"
-        />
-        <path
           class="wave-main"
-          d="M0,55 C300,15 600,72 900,35 C1100,10 1300,60 1440,28 L1440,72 L0,72 Z"
+          d="M0,55 C300,15 600,72 900,35 C1100,10 1300,60 1440,28 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
 
     <!-- ========== TESTIMONIALS SECTION START ========== -->
-    <section class="section">
+    <section class="section" style="background: var(--color-footer);">
       <div class="container">
         <div class="section-header">
-          <span class="eyebrow animate-on-scroll"
+          <span class="eyebrow animate-on-scroll" style="color:var(--color-accent);"
             >What San Diego Parents Are Saying</span
           >
-          <h2 class="section-title animate-on-scroll delay-1">
+          <h2 class="section-title animate-on-scroll delay-1" style="color:var(--color-white);">
             Hundreds of Families Have Found Their Safe Space in the Water
           </h2>
         </div>
@@ -3133,9 +3141,9 @@
             <p class="testimonial-quote">
               We tried Noonan Family Swim School, then YMCA, then the British
               Swim School. The problem with all of them is the instructors have
-              very little experience. Maria has a lot of experience teaching
+              very little experience. <span class="highlight">Maria has a lot of experience teaching
               kids and she is very focused on teaching them to swim the right
-              way. Our six-year-old daughter swims like a champion now. Thank
+              way.</span> Our six-year-old daughter swims like a champion now. Thank
               you, Maria!
             </p>
             <p class="testimonial-author">Gabe Farkas</p>
@@ -3147,8 +3155,8 @@
             <span class="testimonial-quote-mark">"</span>
             <p class="testimonial-quote">
               Coach Maria is patient, dedicated, and truly passionate about
-              teaching. She excels at working with kids and creates a positive,
-              encouraging environment that helps each swimmer thrive. Under her
+              teaching. <span class="highlight">She excels at working with kids and creates a positive,
+              encouraging environment that helps each swimmer thrive.</span> Under her
               guidance, my son has developed a strong work ethic and a genuine
               love for the sport. We are incredibly thankful to have Coach Maria
               as part of our son's swimming journey.
@@ -3162,9 +3170,9 @@
             <span class="testimonial-quote-mark">"</span>
             <p class="testimonial-quote">
               My son took different classes several times to learn to swim, but
-              unfortunately he didn't make progress. Since he started his class
+              unfortunately he didn't make progress. <span class="highlight">Since he started his class
               with Maria, he has both improved and become interested in
-              swimming. Maria is very kind and patient and knows how to teach
+              swimming.</span> Maria is very kind and patient and knows how to teach
               children to swim.
             </p>
             <p class="testimonial-author">Roya Enami</p>
@@ -3190,8 +3198,26 @@
     </section>
     <!-- ========== TESTIMONIALS SECTION END ========== -->
 
+    <!-- Wave: footer dark (testimonials) → white (about) -->
+    <div class="wave-divider wave-bg-footer wave-fill-white" aria-hidden="true">
+      <svg
+        viewBox="0 0 1440 72"
+        preserveAspectRatio="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          class="wave-secondary"
+          d="M0,45 C300,10 600,70 900,38 C1100,16 1300,58 1440,30 L1440,80 L0,80 Z"
+        />
+        <path
+          class="wave-main"
+          d="M0,35 C240,68 480,15 720,50 C960,85 1200,22 1440,48 L1440,80 L0,80 Z"
+        />
+      </svg>
+    </div>
+
     <!-- ========== ABOUT SECTION START ========== -->
-    <section id="about" class="section">
+    <section id="about" class="section" style="padding: var(--space-xl) 1.5rem;">
       <div class="container">
         <div class="about-grid">
           <div class="about-image animate-on-scroll">
@@ -3208,25 +3234,8 @@
               11 Years. Hundreds of Students.<br />One Unwavering Mission.
             </h2>
             <p class="about-intro">
-              Coach Maria isn't just a swim instructor. She's the coach your
-              child will actually want to come back to.
+              Coach Maria isn't just a swim instructor. She's the coach your child will actually want to come back to. With 11 years of private teaching experience across San Diego, she has built a curriculum that builds real confidence in the water, one lesson at a time. Bilingual, fully certified, and genuinely passionate, she treats every student like they are her only one.
             </p>
-            <div class="about-body">
-              <p>
-                Maria started teaching at 16 and has spent the last 11 years
-                building a private coaching curriculum that's helped hundreds of
-                San Diego kids and adults discover a genuine love for the water.
-                Her approach focuses on buoyancy first. When a student
-                feels how naturally their body floats, the fear starts to lift
-                on its own.
-              </p>
-              <p>
-                Fully certified, insured, and bilingual (English &amp; Spanish),
-                Coach Maria brings the same care and enthusiasm to every single
-                lesson. She swam competitively herself and knows firsthand what
-                good coaching looks and feels like.
-              </p>
-            </div>
             <div class="credential-badges">
               <span class="credential-badge"
                 >Red Cross Lifeguarding (2019)</span
@@ -3239,7 +3248,7 @@
               <span class="credential-badge">Se habla español</span>
             </div>
             <div class="btn-wrap">
-              <a href="#hero" class="btn btn-primary btn-lg">Get in Touch</a>
+              <a href="#hero" class="btn btn-accent btn-lg" style="box-shadow:0 8px 24px rgba(244,169,64,0.45);font-weight:800;letter-spacing:0.02em;">Get in Touch</a>
               <span class="btn-subtext"
                 >Spots are limited. Reach out today to check availability.</span
               >
@@ -3555,26 +3564,34 @@
     <div
       class="wave-divider wave-bg-white wave-fill-primary"
       aria-hidden="true"
+      style="margin-bottom:-8px;display:block;"
     >
       <svg
-        viewBox="0 0 1440 72"
+        viewBox="0 0 1440 80"
         preserveAspectRatio="none"
         xmlns="http://www.w3.org/2000/svg"
+        style="height:80px;"
       >
         <path
-          class="wave-secondary"
-          d="M0,50 C240,18 480,72 720,38 C960,4 1200,60 1440,32 L1440,72 L0,72 Z"
-        />
-        <path
-          class="wave-main"
-          d="M0,28 C200,65 480,8 760,48 C1040,88 1240,20 1440,45 L1440,72 L0,72 Z"
+          fill="var(--color-primary)"
+          d="M0,28 C200,65 480,8 760,48 C1040,88 1240,20 1440,45 L1440,80 L0,80 Z"
         />
       </svg>
     </div>
 
     <!-- ========== FINAL CTA SECTION START ========== -->
     <section id="cta" class="section-cta">
-      <div class="container text-center">
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="cta-bubble"></div>
+      <div class="container text-center" style="position:relative;z-index:2;">
         <span class="eyebrow animate-on-scroll">Start Today</span>
         <h2 class="section-title mt-sm animate-on-scroll delay-1">
           Your Child Can Become a Confident Swimmer This Year
@@ -3590,7 +3607,7 @@
         </div>
 
         <div class="btn-wrap btn-wrap-center mt-xl animate-on-scroll delay-3">
-          <a href="#hero" class="btn btn-white btn-lg">Get in Touch</a>
+          <a href="#hero" class="btn btn-white btn-lg" style="background:#fff;color:var(--color-primary);box-shadow:0 8px 32px rgba(0,0,0,0.25);font-weight:800;letter-spacing:0.02em;">Get in Touch</a>
           <span class="btn-subtext">No commitment required. One call, that is all it takes.</span>
         </div>
 
@@ -3876,7 +3893,7 @@
 
       <div class="container">
         <div class="footer-bottom">
-          <p>Safe Space Swim &copy; 2025</p>
+          <p>Safe Space Swim &copy; 2026</p>
           <p class="footer-credit">
             Website and marketing systems developed by
             <a href="https://nilsdigital.com" target="_blank" rel="noopener">Nilsdigital.com</a>
@@ -3979,7 +3996,8 @@
        SERVICE CARD ACCORDION
        ============================================ */
       function initServiceAccordion() {
-        document.querySelectorAll(".service-card").forEach((card) => {
+        const cards = document.querySelectorAll(".service-card");
+        cards.forEach((card) => {
           const btn = card.querySelector(".service-toggle");
           const detail = card.querySelector(".service-detail");
           if (!btn || !detail) return;
@@ -3992,10 +4010,24 @@
               : "Learn More";
           };
           card.addEventListener("click", (e) => {
-            if (e.target.closest("a")) return; // let links work normally
+            if (e.target.closest("a")) return;
             toggle();
           });
         });
+        // Auto-open first two cards (Children's + Adult) on desktop
+        if (window.innerWidth >= 1024) {
+          cards.forEach((card, i) => {
+            if (i < 2) {
+              const detail = card.querySelector(".service-detail");
+              const btn = card.querySelector(".service-toggle");
+              if (detail && btn) {
+                detail.classList.add("open");
+                btn.classList.add("open");
+                btn.querySelector(".service-toggle-text").textContent = "Show Less";
+              }
+            }
+          });
+        }
       }
 
       /* ============================================
@@ -4084,5 +4116,6 @@
         });
       });
     </script>
+    <script src="https://link.nilsdigital.com/js/form_embed.js"></script>
   </body>
 </html>
