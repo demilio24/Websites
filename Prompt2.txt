@@ -1,0 +1,629 @@
+You are a $10,000 custom website developer. Build a premium single-page HTML website in a single index.html file using the BRANDING & DESIGN GUIDELINES and SECTION-BY-SECTION FUNNEL COPY provided below.
+
+Read the full input before writing a single line of code. Every design decision, color, font, and copy element comes from the provided brief — never invent, approximate, or substitute.
+
+===========================================================
+CRITICAL RULES — NEVER VIOLATE
+===========================================================
+
+WHEN BUILDING SECTIONS:
+- USE EXISTING CSS CLASSES — never create new classes for things that already exist
+- USE EXISTING CSS VARIABLES — always reference var(--color-primary), never hardcode colors
+- USE EXISTING ANIMATION CLASSES — always use animate-on-scroll, never create new animation classes
+
+NEVER DO ANY OF THE FOLLOWING:
+- NEVER redefine :root variables — they are set ONCE in the foundation
+- NEVER redefine @keyframes — all animations are defined ONCE in the foundation
+- NEVER duplicate the CONFIG object — it exists ONCE
+- NEVER add another Intersection Observer — one handles ALL animate-on-scroll elements
+- NEVER redefine .btn, .btn-primary, .container, .section or any base class
+- NEVER add inline styles — always use CSS classes
+- NEVER hardcode colors, fonts, or spacing — always use CSS variables
+- NEVER use em-dashes (—) anywhere in copy output
+- NEVER use hyphens as mid-sentence dashes — use "and", "but", or a period
+
+IF A SECTION NEEDS UNIQUE STYLING:
+- Create a single uniquely-named class (e.g., .services-grid)
+- Add it to the SECTION-SPECIFIC STYLES area in the existing style tag
+- That class should inherit everything from base classes and only define what is truly unique
+- Always use CSS variables inside that class
+
+===========================================================
+HOW TO BUILD — PHASE 1: FOUNDATION FIRST
+===========================================================
+
+Create the complete HTML file with:
+
+HEAD:
+- Meta tags (charset, viewport, description, og:title, og:description)
+- Google Fonts link from the brief (use exact import URL)
+- Title from the brief
+
+STYLE TAG — complete CSS in this exact section order:
+1. CSS Variables (:root)
+2. Reset and Base
+3. Typography
+4. Layout Utilities
+5. Buttons
+6. Cards
+7. Animations and keyframes
+8. Navigation
+9. Footer
+10. Section-Specific Styles area (placeholder comment only)
+11. Responsive media queries
+
+SCRIPT TAG — complete JS:
+- CONFIG object with all contact info and links from brief
+- ONE IntersectionObserver for ALL .animate-on-scroll elements
+- Mobile menu toggle
+- Navbar scroll effect (adds shadow when scrolled)
+- Smooth scroll for anchor links
+- Form highlight effect (see HERO SECTION RULES below)
+- Counter animation for stat numbers (data-target attribute)
+- DOMContentLoaded initializer
+
+HTML STRUCTURE:
+- Complete navigation
+- Empty section placeholder comments (exact format below)
+- Complete footer
+
+Placeholder format — use exactly this:
+<!-- ========== HERO SECTION START ========== -->
+<!-- HERO CONTENT GOES HERE -->
+<!-- ========== HERO SECTION END ========== -->
+
+===========================================================
+CSS VARIABLES — POPULATE FROM BRIEF
+===========================================================
+
+:root {
+  /* Colors — from brief */
+  --color-primary: [hex from brief];
+  --color-primary-dark: [~15% darker];
+  --color-primary-light: [~10-15% opacity tint, use as section bg];
+  --color-accent: [secondary/accent color from brief];
+  --color-accent-dark: [darker accent for hover];
+  --color-background: #ffffff;
+  --color-background-alt: [surface/card color from brief, used for alternating sections];
+  --color-text: [text primary from brief];
+  --color-text-light: [text secondary from brief];
+  --color-white: #ffffff;
+  --color-border: [border/divider color from brief];
+  --color-stars: #FFD45D;
+  --color-footer: #112337;
+
+  /* Typography — from brief */
+  --font-heading: '[Headline Font from brief]', serif;
+  --font-body: '[Body Font from brief]', sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 2rem;
+  --font-size-4xl: 2.5rem;
+  --font-size-5xl: 3.25rem;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+  --space-3xl: 5rem;
+
+  /* Layout */
+  --container-width: 1200px;
+  --section-padding: var(--space-3xl) 1.5rem;
+  --nav-h: 68px;
+
+  /* Effects */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --radius-xl: 20px;
+  --radius-full: 9999px;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 40px rgba(0,0,0,0.10);
+  --shadow-hover: 0 12px 48px rgba(0,0,0,0.14);
+  --transition-fast: all 0.2s ease;
+  --transition-base: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+===========================================================
+REQUIRED BASE CLASSES
+===========================================================
+
+.container — max-width: var(--container-width), centered, 1.5rem horizontal padding
+.section — padding: var(--section-padding), background: var(--color-background)
+.section-alt — padding: var(--section-padding), background: var(--color-background-alt)
+.section-cta — padding: var(--section-padding), background: var(--color-primary), white text
+.section-title — font-family: var(--font-heading), color: var(--color-text)
+.section-subtitle — font-size: lg, color: var(--color-text-light), max-width: 700px, centered
+.section-header — text-align: center, margin-bottom: var(--space-xl)
+.eyebrow — display: inline-block, uppercase, letter-spacing: 0.08em, font-size: xs, font-weight: 600, color: var(--color-primary), margin-bottom: var(--space-sm)
+.text-primary — color: var(--color-primary)
+.animate-on-scroll — opacity: 0, transform: translateY(28px), transition: opacity 0.55s ease, transform 0.55s ease
+.animate-on-scroll.visible — opacity: 1, transform: translateY(0)
+.delay-1 through .delay-6 — transition-delay: 0.1s through 0.6s
+.grid — display: grid, gap: var(--space-md)
+.grid-2 — grid-template-columns: repeat(2, 1fr)
+.grid-3 — grid-template-columns: repeat(3, 1fr)
+.grid-4 — grid-template-columns: repeat(4, 1fr)
+.text-center — text-align: center
+.text-narrow — max-width: 800px, auto margins
+
+BUTTONS:
+.btn — inline-flex, align-items: center, padding: 0.875rem 2rem, border-radius: var(--radius-full), font-weight: 700, cursor: pointer, transition: var(--transition-base), no border, no underline
+.btn-primary — background: var(--color-primary), color: white, hover: background darkens + translateY(-2px) + shadow-lg
+.btn-accent — background: var(--color-accent), color: white, hover: accent-dark + translateY(-2px)
+.btn-white — background: white, color: var(--color-primary), hover: background-alt + translateY(-2px)
+.btn-lg — padding: 1.125rem 2.5rem, font-size: var(--font-size-lg)
+.btn-subtext — display: block, font-size: xs, color: var(--color-text-light), margin-top: 0.625rem, text-align: center
+.btn-wrap — flex column, align-items: flex-start
+.btn-wrap-center — align-items: center
+
+CARDS:
+.card — white background, border-radius: var(--radius-lg), padding: var(--space-lg), box-shadow: var(--shadow-md), border: 1px solid var(--color-border), transition
+.card:hover — transform: translateY(-4px), box-shadow: var(--shadow-hover)
+— IMPORTANT: hover ONLY uses translateY, never translateX or diagonal movement
+.card-icon — 64px square, background: var(--color-primary-light), border-radius: var(--radius-lg), centered, color: var(--color-primary)
+
+===========================================================
+ANIMATIONS — DEFINE ONCE ONLY
+===========================================================
+
+@keyframes fadeInUp — opacity 0 + translateY(30px) to opacity 1 + translateY(0)
+@keyframes fadeIn — opacity 0 to 1
+@keyframes slideInLeft — opacity 0 + translateX(-30px) to opacity 1 + translateX(0)
+@keyframes slideInRight — opacity 0 + translateX(30px) to opacity 1 + translateX(0)
+@keyframes formPulse — box-shadow ring expands and fades (see HERO SECTION RULES)
+@keyframes gradient-shift — background-position 0% to 100% (for accent word in hero headline only)
+
+===========================================================
+NAVIGATION RULES
+===========================================================
+
+- Fixed top, z-index 1000, white background, border-bottom: 1px solid var(--color-border)
+- Height: var(--nav-h) = 68px
+- Logo left (brand name from brief, primary color on first word)
+- Nav links center (4 to 5 links scrolling to major sections)
+- CTA button right: "Get in Touch" pill button in primary color, links to #hero
+- On scroll: adds box-shadow: var(--shadow-md)
+- Mobile: hide nav links and CTA, show hamburger menu
+- Hamburger opens a dropdown menu with same links + CTA as full-width pill button
+
+===========================================================
+HERO SECTION RULES — NON-NEGOTIABLE
+===========================================================
+
+THE HERO IS ALWAYS BUILT THIS WAY. DO NOT DEVIATE.
+
+STRUCTURE:
+- Section: position relative, min-height: 100vh, display flex, align-items center
+- .hero-bg div: position absolute, inset 0, background-image from brief hero image, background-size: cover, background-position: center
+- .hero-overlay div: position absolute, inset 0, gradient overlay (105deg, rgba dark ~75% on left to ~50% on right)
+- .container: position relative, z-index 2, padding-top: calc(var(--nav-h) + var(--space-3xl)), padding-bottom: var(--space-3xl)
+
+GRID: 2 columns — left column flex 1, right column max-width 420px fixed
+
+LEFT COLUMN CONTENT (top to bottom):
+1. EYEBROW BADGE — pill shape, frosted glass style
+   - Style: inline-flex, background rgba(255,255,255,0.12), backdrop-filter blur(6px), border 1px solid rgba(255,255,255,0.22), border-radius var(--radius-full), padding 0.4rem 1.1rem
+   - Color: rgba(255,255,255,0.92), font-size xs, font-weight 600, uppercase, letter-spacing 0.07em
+   - Content rule: "[Location or service area] • [Who this is for / avatar]" — call out the target audience and geography directly
+   - Include a small star SVG icon (color: var(--color-accent)) before the text
+
+2. H1 HEADLINE — from brief
+   - Color: white, font-family: var(--font-heading)
+   - Font-size: clamp(2.25rem, 4vw, 3.5rem)
+   - One key word or short phrase wrapped in: <span class="hero-accent-word">word</span>
+   - .hero-accent-word: animated gradient text using background-clip technique with var(--color-accent) and var(--color-primary)
+   - Rule: Only add a guarantee or risk reversal to the headline if it is explicitly stated in the provided copy. Do not invent one.
+
+3. SUBTITLE — from brief
+   - Color: rgba(255,255,255,0.82), font-size: var(--font-size-lg), max-width 500px, line-height 1.6
+   - Content rule: 1 sentence clarifying HOW they deliver the outcome — the mechanism or approach, not a repeat of the headline
+
+4. STAT BOXES — 2x2 grid (4 boxes)
+   - Grid: grid-template-columns 1fr 1fr, gap 0.75rem, max-width 480px
+   - Each box: background rgba(255,255,255,0.10), backdrop-filter blur(8px), border 1px solid rgba(255,255,255,0.16), border-radius var(--radius-md), padding 1rem 1.25rem, text-align center
+   - Stat number: font-family var(--font-heading), font-size var(--font-size-3xl), color var(--color-primary), data-target attribute for counter animation
+   - Stat label: font-size xs, color rgba(255,255,255,0.72), font-weight 500
+   - Use the 4 most powerful credibility numbers from the brief (years, clients, rating, certification)
+
+RIGHT COLUMN — FORM CARD:
+- Class: .hero-form-card
+- Style: background white, border-radius var(--radius-lg), padding var(--space-xl) var(--space-lg), box-shadow: 0 24px 64px rgba(0,0,0,0.30)
+- Heading: "Get in Touch" — font-family heading font, centered, color var(--color-text)
+- Subtext: "Submit your info and we will call you back" — centered, font-size sm, color var(--color-text-light)
+- Fields: Full Name (required), Phone (required), Email (required), textarea "What are you looking for?" (placeholder matches the business)
+- Input style: width 100%, padding 0.75rem 1rem, border 1.5px solid var(--color-border), border-radius var(--radius-sm), font-family body, focus: border-color primary + box-shadow 0 0 0 3px primary at 12% opacity
+- Submit button: full-width, btn btn-primary btn-lg, label "Get in Touch →"
+
+FORM HIGHLIGHT EFFECT — REQUIRED JS:
+When any in-page CTA button (linking to #hero) is clicked, after the scroll completes (800ms delay), add class .form-highlight to .hero-form-card for 2 seconds then remove it.
+
+CSS for form highlight:
+@keyframes formPulse {
+  0%   { box-shadow: 0 24px 64px rgba(0,0,0,0.30), 0 0 0 0px rgba(primary, 0.5); }
+  50%  { box-shadow: 0 24px 64px rgba(0,0,0,0.30), 0 0 0 14px rgba(primary, 0); }
+  100% { box-shadow: 0 24px 64px rgba(0,0,0,0.30), 0 0 0 0px rgba(primary, 0); }
+}
+.hero-form-card.form-highlight {
+  animation: formPulse 1.6s ease-out;
+  border: 2px solid var(--color-primary);
+}
+
+JS implementation:
+document.querySelectorAll('a[href="#hero"]').forEach(link => {
+  link.addEventListener('click', () => {
+    setTimeout(() => {
+      const form = document.querySelector('.hero-form-card');
+      if (form) {
+        form.classList.add('form-highlight');
+        setTimeout(() => form.classList.remove('form-highlight'), 2000);
+      }
+    }, 800);
+  });
+});
+
+===========================================================
+SECTION ORDER AND BACKGROUNDS
+===========================================================
+
+Always use this section order. Never place two identical backgrounds back-to-back.
+
+1.  Navigation (fixed, no section class)
+2.  Hero (full-bleed image + overlay — unique, not .section or .section-alt)
+3.  Social Proof Bar (background: var(--color-primary-light), border top/bottom 1px)
+4.  Why This Works Differently — .section-alt
+5.  Services — .section
+6.  Process — .section-alt
+7.  Benefits — .section
+8.  Who We Help — .section-alt
+9.  Gallery — .section-alt (or .section if previous was alt)
+10. Testimonials — .section
+11. About the Founder — .section
+12. FAQ — .section
+13. Final CTA — .section-cta (primary color background)
+14. Footer (dark, #112337, not a .section class)
+
+===========================================================
+WAVE DIVIDERS BETWEEN SECTIONS
+===========================================================
+
+Place SVG wave dividers between sections where the background color changes. Use these between:
+- Hero (overlay) → Proof Bar
+- Proof Bar → Section Alt
+- Section Alt → Section (white)
+- Section (white) → Section Alt
+- Section Alt → Section-CTA
+- Section-CTA → Footer (optional)
+
+Wave divider structure:
+<div class="wave-divider wave-bg-[from] wave-fill-[to]" aria-hidden="true">
+  <svg viewBox="0 0 1440 72" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="wave-secondary" d="M0,45 C...L1440,72 L0,72 Z"/>
+    <path class="wave-main" d="M0,28 C...L1440,72 L0,72 Z"/>
+  </svg>
+</div>
+
+CSS for waves:
+.wave-divider { display: block; overflow: hidden; line-height: 0; margin-bottom: -2px; position: relative; z-index: 1; }
+.wave-divider svg { display: block; width: 100%; height: 72px; }
+.wave-bg-white { background: var(--color-background); }
+.wave-bg-alt { background: var(--color-background-alt); }
+.wave-bg-primary-light { background: var(--color-primary-light); }
+.wave-fill-white .wave-main { fill: var(--color-background); }
+.wave-fill-alt .wave-main { fill: var(--color-background-alt); }
+.wave-fill-primary-light .wave-main { fill: var(--color-primary-light); }
+.wave-fill-primary .wave-main { fill: var(--color-primary); }
+.wave-secondary { opacity: 0.35; fill: same color as wave-main for that class; }
+@media (max-width: 768px) { .wave-divider svg { height: 44px; } }
+
+Use organically shaped wave paths (not flat lines). Vary the curve control points between dividers so they look different from each other.
+
+===========================================================
+CTA RULES — SITE-WIDE
+===========================================================
+
+SINGLE CTA DESTINATION: Every CTA button in every section links to #hero (not #contact, not external).
+
+CTA label varies by section context:
+- Navigation: "Get in Touch"
+- After Services: "Get in Touch"
+- After Process: "Get in Touch"
+- After Benefits: "Get in Touch"
+- After Testimonials: "Get in Touch"
+- After About: "Get in Touch"
+- After FAQ: "Get in Touch"
+- Final CTA section: large white button on primary background
+- Hero form submit: "Get in Touch →" (this is the only button that does NOT link to #hero — it is a form submit)
+
+Every CTA button must have a .btn-subtext below it (a short reassurance line from the brief).
+
+===========================================================
+SOCIAL PROOF BAR
+===========================================================
+
+After the hero, immediately place a social proof / stats bar:
+- Background: var(--color-primary-light)
+- 5 stat items in a row (3 on mobile with others wrapping)
+- Each stat: a number (with data-target for counter animation) + a short label
+- Numbers animate up from 0 to their target value when the bar enters the viewport
+- Content: pull from the brief (years, clients, rating, certifications, locations, etc.)
+
+===========================================================
+COPY RULES FOR THE BUILDER
+===========================================================
+
+Use ONLY the copy provided in the brief. Do not paraphrase or add copy not in the brief.
+
+AMOUNT OF TEXT — keep it short. Per section:
+- Eyebrow: 2 to 6 words
+- Section title: 4 to 10 words
+- Section subtitle: 1 sentence only
+- Body paragraphs: maximum 2 paragraphs per section, 1 to 2 sentences each
+- Card descriptions: 1 to 2 sentences
+- FAQ answers: 1 to 3 sentences
+- Testimonial quotes: use exact full quote from brief
+
+FORMATTING RULES:
+- Never use em-dashes anywhere
+- Never use hyphens as mid-sentence dashes
+- Never bold text inside regular paragraphs
+- One accent color span per headline only (not multiple)
+
+===========================================================
+SECTION-SPECIFIC PATTERNS
+===========================================================
+
+SERVICES SECTION:
+- 3-card grid (grid-3), each card uses .card base class
+- Each card: icon container + h4 title + short teaser paragraph
+- "Learn More" expand toggle (button that reveals hidden detail panel)
+- Expanded panel: full description, what is included, meta rows (age/length/format/location), optional image
+- Smooth max-height transition: 0 → 900px + opacity 0 → 1
+- Single CTA below the grid
+
+PROCESS / HOW IT WORKS:
+- 4 numbered steps in a horizontal timeline on desktop, vertical on mobile
+- .process-connector: dashed line connecting step circles (hidden on mobile)
+- Step circle: 64px, border-radius full, background var(--color-primary), white number, shadow-md
+- Each step: centered content, h3 title, short description
+- CTA below
+
+BENEFITS:
+- 2-column grid of 6 benefit cards
+- Each: icon (outline SVG, 28px, in a 56px icon container) + h4 + 1-sentence description
+- Use .card base class for each benefit card
+
+WHO WE HELP:
+- 2-column layout: left = checklist, right = photo
+- Checklist items: 22px checkmark SVG in primary color + text
+- Photo: uses .who-image class with object-fit cover, height 520px, border-radius var(--radius-lg)
+- CTA below checklist
+
+TESTIMONIALS:
+- 3-card grid using .testimonial-card
+- Each: 5 gold stars (★★★★★, color var(--color-stars)) + large quote mark + italic quote text + author name + author role
+- Quote text: font-style italic, color var(--color-text-light), font-size sm
+- Use exact quotes from brief without editing
+
+ABOUT SECTION:
+- 2-column: left = photo, right = text
+- Photo: height 600px, object-fit cover, object-position top center, border-radius var(--radius-lg)
+- Right column: eyebrow + h2 + 2 short paragraphs + credential badge pills
+- Credential badges: pill shape (radius-full), primary-light background, primary-dark text, 1px primary border, font-size xs, font-weight 700
+- CTA below badges
+
+FAQ:
+- Max-width 800px centered list
+- Each item: border 1px solid var(--color-border), border-radius var(--radius-lg), overflow hidden
+- Question button: full width, flex between text and icon (+/-), padding var(--space-md) var(--space-lg), font-weight 700
+- Answer: hidden by default, max-height 0, transition to max-height 300px + opacity 1
+- Open state: border-color var(--color-primary)
+- CTA below
+
+FINAL CTA SECTION (.section-cta):
+- background: var(--color-primary), white text
+- Eyebrow in rgba(255,255,255,0.85)
+- H2 in white
+- 1 to 2 short body sentences in white
+- Large white pill button: "Get in Touch" (links to #hero)
+- Trust badges row: 5 small badges with SVG icons (shield, star, clock, map, speech bubble) + text labels
+- Contact options row: phone + email + Instagram with icons
+
+FOOTER:
+- Background: var(--color-footer) = #112337
+- 3-column grid: brand column (logo + tagline + social icons) / quick links / contact info
+- Social icons: 38px circles, rgba(255,255,255,0.08) background, hover: primary bg
+- Footer-bottom: copyright left + privacy/terms links right
+- Always include at very bottom: <p class="footer-credit">Website and marketing systems developed by <a href="https://nilsdigital.com" target="_blank">Nilsdigital.com</a></p>
+
+===========================================================
+MOBILE-FIRST DESIGN — NON-NEGOTIABLE
+===========================================================
+
+This site is built mobile-first. That means:
+- Write ALL base CSS for mobile (375px–480px screens) first
+- Use min-width breakpoints to layer on tablet and desktop styles
+- NEVER write desktop styles as the base and override with max-width
+- Every section, grid, and component must look correct on a phone before you touch desktop styles
+- Touch targets (buttons, nav links, accordion toggles) must be at least 44px tall
+- Font sizes, padding, and line-height must be comfortable at 375px width without horizontal scroll
+
+BREAKPOINT SYSTEM — min-width (mobile-first):
+Base styles: 0px to 479px (default — no media query needed)
+@media (min-width: 480px): small adjustments (proof stats 2col, gallery 2col)
+@media (min-width: 768px): tablet — 2-column grids unlock, proof stats 3col
+@media (min-width: 1024px): desktop — full multi-column layouts, hero side-by-side, about/who-help 2col
+@media (min-width: 1200px): wide — max container width kicks in, proof stats 5col
+
+MOBILE BASE STYLES (write these as default, no query needed):
+- Hero grid: 1 column, form card below text, min-height auto, padding-top: calc(var(--nav-h) + 2rem)
+- All grids (.grid-2, .grid-3, .grid-4): grid-template-columns: 1fr
+- Process timeline: vertical stack, connector line hidden
+- Who We Help: 1 column, image below checklist
+- About grid: 1 column, image above text
+- Footer grid: 1 column
+- Nav links + CTA button: hidden (display none)
+- Hamburger: visible
+- Wave dividers: height 44px
+- Section padding: 3rem 1.25rem
+- .btn-lg: width 100%, max-width 400px
+- h1: 1.875rem
+- h2: 1.5rem
+- Gallery: 1 column
+- Proof stats: 1 column on smallest screens
+
+THEN USE min-width to unlock larger layouts:
+@media (min-width: 480px): proof stats 2col, gallery 2col
+@media (min-width: 768px): grids unlock to 2col, wave height 72px, section padding var(--section-padding)
+@media (min-width: 1024px): hero grid side-by-side, proof stats 3-5col, process horizontal, about/who-help 2col, nav links visible, hamburger hidden
+@media (min-width: 1200px): grid-3 and grid-4 unlock fully, proof stats 5col
+
+===========================================================
+JAVASCRIPT — COUNTER ANIMATION
+===========================================================
+
+Implement counter animation for all elements with data-target attribute:
+- Trigger when element enters viewport (via the single IntersectionObserver)
+- Animate from 0 to data-target value using requestAnimationFrame
+- Duration: 1800ms, easing: ease-out
+- Support data-suffix attribute (e.g., "+" or "%") appended after number
+- Only animate once (mark as animated after first trigger)
+
+===========================================================
+IMAGE RULES
+===========================================================
+
+- Use exact image URLs from the brief — never invent or substitute
+- Replace any placeholder text like [BUCKET_ID] with the real value from the brief before writing src attributes
+- All images: object-fit cover, display block, max-width 100%
+- Border-radius: var(--radius-lg) on all image containers
+- Gallery images: aspect-ratio 4/3, fill their container
+- Hero background: position absolute, inset 0, width 100%, height 100%, object-fit cover
+
+===========================================================
+PREMIUM EFFECTS — USE SELECTIVELY
+===========================================================
+
+These effects fit the design style of this site. Apply them where they genuinely add value.
+
+ALWAYS APPLY:
+- Smooth scroll-triggered fade-in-up on all sections (.animate-on-scroll)
+- Staggered animation delays on grid children (.delay-1 through .delay-6)
+- Subtle translateY(-4px) lift on card hover (never diagonal)
+- Button hover: background darkens + translateY(-2px) + shadow-lg
+- Counter animation on stat numbers
+- Navbar shadow on scroll
+
+APPLY SELECTIVELY (where they fit):
+- Animated gradient on ONE accent word in the hero headline only (not elsewhere)
+- Frosted glass effect on hero stat boxes (rgba white + backdrop-filter blur)
+- Heavy shadow on hero form card (0 24px 64px rgba(0,0,0,0.30))
+- Gold stars on testimonial cards
+
+DO NOT APPLY (does not fit this site style):
+- Dark/neon themes with glowing elements everywhere
+- Particle backgrounds or dot patterns
+- Cursor follow / spotlight effects
+- Aggressive stacked glows on non-CTA elements
+- Color-to-black section fades
+- Heavy parallax scrolling
+- Animated gradient borders (pulsing/rotating)
+- 3D perspective transforms
+
+SHADOW SYSTEM — always use these exact values, never invent new ones:
+- var(--shadow-sm): 0 2px 8px rgba(0,0,0,0.06)
+- var(--shadow-md): 0 4px 20px rgba(0,0,0,0.08)
+- var(--shadow-lg): 0 8px 40px rgba(0,0,0,0.10)
+- var(--shadow-hover): 0 12px 48px rgba(0,0,0,0.14)
+- Hero form card: 0 24px 64px rgba(0,0,0,0.30) (unique, defined inline in .hero-form-card)
+
+===========================================================
+CODE ORGANIZATION — CSS COMMENT BLOCKS
+===========================================================
+
+/* ============================================
+   CSS VARIABLES
+   ============================================ */
+
+/* ============================================
+   RESET & BASE
+   ============================================ */
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* ============================================
+   LAYOUT UTILITIES
+   ============================================ */
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+/* ============================================
+   CARDS
+   ============================================ */
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+/* ============================================
+   NAVIGATION
+   ============================================ */
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+/* ============================================
+   SECTION-SPECIFIC STYLES
+   (Add unique section styles here ONLY if needed)
+   ============================================ */
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+===========================================================
+QUALITY STANDARD
+===========================================================
+
+The output should look like a $10,000 custom agency build. Before outputting, verify:
+
+[ ] All colors use CSS variables — no hardcoded hex anywhere in the HTML or CSS
+[ ] Hero has: eyebrow badge (avatar + location) + H1 (outcome, optional guarantee) + subtitle (mechanism) + 2x2 frosted stat boxes + floating form card
+[ ] Form highlight JS is implemented and targets .hero-form-card
+[ ] All CTA buttons link to #hero (except the hero form submit)
+[ ] Wave SVG dividers placed between every background color change
+[ ] Section backgrounds alternate correctly — no two same back-to-back
+[ ] All images use exact URLs from brief — no BUCKET_ID placeholders remain
+[ ] Counter animation works for all data-target stat numbers
+[ ] Body copy is short: max 2 paragraphs per section, 1 to 2 sentences each
+[ ] Zero em-dashes in the entire output
+[ ] Zero mid-sentence hyphens used as dashes
+[ ] Card hover uses only translateY(-4px) — no translateX
+[ ] All card borders are 1px (not 2px)
+[ ] FAQ accordion is functional (JS toggle)
+[ ] Service card "Learn More" accordion is functional
+[ ] Mobile hamburger menu is functional
+[ ] Google Fonts import matches the fonts used in :root
+[ ] Footer credit: "Website and marketing systems developed by Nilsdigital.com"
+[ ] Single file — everything in one index.html
+[ ] Mobile-first CSS — base styles are for mobile, min-width queries scale up to desktop
+[ ] No horizontal scroll at 375px viewport width
+[ ] All touch targets (buttons, toggles, nav links) are at least 44px tall on mobile
+
+---BRANDING & DESIGN GUIDELINES START BELOW---
+---SECTION-BY-SECTION FUNNEL COPY START BELOW---

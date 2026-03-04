@@ -243,6 +243,99 @@
       </div>
     </section>
 
+    <script>
+(function () {
+  const RADIO_ATTR = 'what_type_of_student_are_you_registering?';
+  let currentSelection = null;
+
+  // Finds a payment tag by the dollar amount text it contains
+  function getTag(amount) {
+    const tags = document.querySelectorAll('.payment-suggestion-tag-container');
+    for (var i = 0; i < tags.length; i++) {
+      if (tags[i].innerText.replace(/\s/g, '').includes(amount)) {
+        return tags[i];
+      }
+    }
+    return null;
+  }
+
+  function applyVisibility() {
+    const tag100 = getTag('100');
+    const tag35  = getTag('35');
+
+    if (!tag100 || !tag35) {
+      console.log('[GHL Toggle] Payment tags not in DOM yet, will retry...');
+      return;
+    }
+
+    if (currentSelection === 'New student') {
+      tag100.style.setProperty('display', '', 'important');
+      tag35.style.setProperty('display', 'none', 'important');
+      console.log('[GHL Toggle] ✅ New student → $100 visible, $35 hidden');
+    } else if (currentSelection === 'Returning student') {
+      tag100.style.setProperty('display', 'none', 'important');
+      tag35.style.setProperty('display', '', 'important');
+      console.log('[GHL Toggle] ✅ Returning student → $100 hidden, $35 visible');
+    } else {
+      tag100.style.setProperty('display', '', 'important');
+      tag35.style.setProperty('display', '', 'important');
+      console.log('[GHL Toggle] No selection yet — both visible');
+    }
+  }
+
+  function attachRadioListeners() {
+    const radios = document.querySelectorAll('input[type="radio"][data-q="' + RADIO_ATTR + '"]');
+    if (!radios.length) return false;
+
+    radios.forEach(function (radio) {
+      if (radio.dataset.ghlBound) return;
+      radio.dataset.ghlBound = '1';
+
+      radio.addEventListener('change', function () {
+        if (this.checked) {
+          currentSelection = this.value;
+          console.log('[GHL Toggle] Radio changed:', currentSelection);
+          applyVisibility();
+        }
+      });
+
+      if (radio.checked) {
+        currentSelection = radio.value;
+      }
+    });
+
+    console.log('[GHL Toggle] Listeners attached to', radios.length, 'radio(s). Current selection:', currentSelection);
+    applyVisibility();
+    return true;
+  }
+
+  // Poll every 300ms until radios are found, then keep reapplying on DOM changes
+  var attached = false;
+  var pollInterval = setInterval(function () {
+    if (attachRadioListeners()) {
+      attached = true;
+      clearInterval(pollInterval);
+
+      // Watch for GHL re-renders wiping out our styles
+      var observer = new MutationObserver(function () {
+        applyVisibility();
+      });
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style'] });
+      console.log('[GHL Toggle] MutationObserver active — will re-apply on re-render');
+    }
+  }, 300);
+
+  // Stop polling after 30s to avoid infinite loop
+  setTimeout(function () {
+    if (!attached) {
+      clearInterval(pollInterval);
+      console.warn('[GHL Toggle] Gave up after 30s — radios never found. Check if form is in an iframe.');
+    }
+  }, 30000);
+
+})();
+</script>
+
     <!-- FOOTER -->
     <footer class="footer">
       <p>

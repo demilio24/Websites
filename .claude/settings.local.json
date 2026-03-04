@@ -10,7 +10,18 @@
       "Bash(py:*)",
       "Bash(node --version:*)",
       "Bash(node:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(git pull --rebase)",
+      "Bash(git stash)",
+      "Bash(git stash pop)",
+      "Bash(python -:*)",
+      "WebFetch(domain:marketplace.gohighlevel.com)",
+      "WebFetch(domain:help.gohighlevel.com)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:community.make.com)",
+      "WebFetch(domain:www.ducks2water.com)",
+      "Bash(grep -v \"footer\\\\|comment\\\\|//\")",
+      "Bash(\"f:/GitHub/CS-Infraestructura/memory/MEMORY.md\":*)"
     ]
   }
 }
