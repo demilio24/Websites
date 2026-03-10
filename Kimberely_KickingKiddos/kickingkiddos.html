@@ -816,8 +816,11 @@
     .about { padding: 110px 0; }
     .about__layout {
       display: grid;
-      gap: 60px;
-      align-items: center;
+      gap: 40px 60px;
+      align-items: start;
+    }
+    .about__header {
+      grid-column: 1 / -1;
     }
     .about__img-wrap { position: relative; }
     .about__img {
@@ -1573,6 +1576,10 @@
   <section class="about" id="about">
     <div class="wrap">
       <div class="about__layout">
+        <div class="about__header reveal">
+          <span class="label">About Kicking Kiddos</span>
+          <h2 class="h2" style="margin-bottom: 0;">Kicking Kiddos: Water Safety &amp; Swimming Excellence</h2>
+        </div>
         <div class="about__img-wrap reveal">
           <img
             src="https://assets.cdn.filesafe.space/y8AfcwWjebLRDs50RH69/media/69a889bf6fa6586d8ec2d61c.jpg"
@@ -1588,8 +1595,6 @@
           </div>
         </div>
         <div class="reveal reveal-d1">
-          <span class="label">About Kicking Kiddos</span>
-          <h2 class="h2" style="margin-bottom: 14px;">Kicking Kiddos: Water Safety &amp; Swimming Excellence</h2>
           <p class="lead" style="margin-bottom: 20px;">Kicking Kiddos provides award-winning, professional aquatic instruction in Topeka, Kansas. With a focus on patience and safety, we help children of all levels build confidence and joy in the water.</p>
           <ul class="about__bullets" style="margin: 0 0 0;">
             <li><strong>Award-Winning:</strong> Three-time Platinum Award winner for excellence in aquatic instruction.</li>
