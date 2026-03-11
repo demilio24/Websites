@@ -23,8 +23,9 @@
         @keyframes swim-across { 0% { left: -30px; } 100% { left: calc(100% + 30px); } }
         .profile { text-align: center; margin-bottom: 28px; }
         .retreat-badge { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 800; letter-spacing: 2.5px; text-transform: uppercase; background: linear-gradient(135deg, var(--yellow), #ffa726); color: var(--dark); padding: 5px 16px; border-radius: 6px; margin-bottom: 16px; box-shadow: 0 3px 12px rgba(255,215,0,0.3); }
-        .avatar-ring { width: 96px; height: 96px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; margin: 0 auto 14px; box-shadow: 0 6px 28px rgba(65,88,208,0.35); animation: float 4s ease-in-out infinite; }
+        .avatar-ring { width: 96px; height: 96px; border-radius: 50%; overflow: hidden; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-size: 2.8rem; margin: 0 auto 14px; box-shadow: 0 6px 28px rgba(65,88,208,0.35); animation: float 4s ease-in-out infinite; }
         @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-7px); } }
+        .avatar-ring img { width: 100%; height: 100%; object-fit: cover; }
         .profile-name { font-family: 'DM Sans', sans-serif; font-size: 1.6rem; font-weight: 900; letter-spacing: -0.02em; color: var(--dark); }
         .profile-biz { font-size: 0.88rem; font-weight: 700; color: var(--accent); margin-top: 4px; letter-spacing: 0.5px; }
         .profile-tag { font-size: 0.75rem; color: var(--blue-sky); font-weight: 600; margin-top: 3px; opacity: 0.8; }
@@ -44,6 +45,7 @@
         .icon-instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
         .icon-email { background: linear-gradient(135deg, #f57c00, #ffb74d); }
         .icon-website { background: linear-gradient(135deg, #0072ff, #00c6ff); }
+        .icon-resource { background: linear-gradient(135deg, #11998e, #38ef7d); }
         .fade-up { opacity: 0; transform: translateY(20px); animation: fadeUp 0.6s ease forwards; }
         @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
         .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; } .delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
@@ -61,7 +63,7 @@
     </div>
     <div class="profile fade-up delay-1">
         <div class="retreat-badge">RETREAT 2026</div>
-        <div class="avatar-ring">🌸</div>
+        <div class="avatar-ring"><img src="photos/chelsea.png" alt="Chelsea Cates"></div>
         <div class="profile-name">Chelsea Cates</div>
         <div class="profile-biz">Float Swim Academy</div>
         <div class="profile-tag">Mentor · Retreat 2026</div>
@@ -94,6 +96,14 @@
         <div class="link-text">
             <div>Email Chelsea</div>
             <div class="link-sub">floatcda@gmail.com</div>
+        </div>
+        <span class="arrow">›</span>
+    </a>
+    <a href="photos/chelsea_5day.jpeg" target="_blank" rel="noopener" class="link-btn fade-up delay-6">
+        <div class="link-icon icon-resource">🖼️</div>
+        <div class="link-text">
+            <div>5 Day Magic Method</div>
+            <div class="link-sub">View Resource</div>
         </div>
         <span class="arrow">›</span>
     </a>
