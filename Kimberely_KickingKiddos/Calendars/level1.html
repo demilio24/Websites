@@ -67,7 +67,7 @@
     }
 
     /* ── PAGE ── */
-    .page-wrap { padding: 94px 20px 60px; max-width: 800px; margin: 0 auto; }
+    .page-wrap { padding: 94px 20px 60px; max-width: 960px; margin: 0 auto; }
 
     /* ── HEADER ── */
     .page-header { text-align: center; margin-bottom: 28px; }
@@ -84,52 +84,42 @@
     }
     .page-header p { font-size: .92rem; color: var(--muted); max-width: 500px; margin: 0 auto; line-height: 1.6; }
 
-    /* ── HOW IT WORKS ── */
-    .how-it-works {
-      background: #fff; border-radius: 18px;
-      box-shadow: 0 2px 8px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.08);
-      padding: 24px 28px; margin-bottom: 24px;
-    }
-    .hiw-title {
-      font-size: .72rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
-      color: var(--blue); margin-bottom: 16px;
-    }
-    .hiw-steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
-    .hiw-step { text-align: center; }
-    .hiw-num {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: rgba(10,126,245,.1); color: var(--blue);
-      font-size: .85rem; font-weight: 800;
-      display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 8px;
-    }
-    .hiw-step strong { display: block; font-size: .82rem; font-weight: 800; color: #1a1a2e; margin-bottom: 3px; }
-    .hiw-step span { font-size: .75rem; color: var(--muted); line-height: 1.45; }
-    @media (max-width: 520px) {
-      .hiw-steps { grid-template-columns: 1fr; gap: 10px; }
-      .hiw-step { display: flex; align-items: flex-start; gap: 12px; text-align: left; }
-      .hiw-num { flex-shrink: 0; margin: 0; }
-    }
-
     /* ── ALERT BANNER ── */
     .alert-banner {
-      background: #fff9ec; border: 2px solid #f5a623;
-      border-radius: 16px; padding: 20px 24px; margin-bottom: 24px;
-      display: flex; gap: 14px; align-items: flex-start;
+      background: linear-gradient(135deg, #1a1a2e 0%, #0d1528 100%);
+      border-radius: 16px; padding: 28px 32px; margin-bottom: 24px;
+      border-left: 5px solid #f5a623;
+      box-shadow: 0 4px 24px rgba(0,0,0,.18);
     }
-    .alert-icon { font-size: 1.8rem; flex-shrink: 0; line-height: 1; margin-top: 2px; }
-    .alert-body { flex: 1; min-width: 0; }
-    .alert-body strong {
-      display: block; font-size: 1rem; font-weight: 900; color: #92400e;
-      margin-bottom: 8px; letter-spacing: -.01em;
+    .alert-title {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 1rem; font-weight: 900; color: #f5a623;
+      letter-spacing: -.01em; margin-bottom: 18px;
     }
-    .alert-body ul { list-style: none; display: flex; flex-direction: column; gap: 7px; padding: 0; }
-    .alert-body li {
-      display: flex; align-items: flex-start; gap: 8px;
-      font-size: .86rem; color: #78350f; line-height: 1.5; font-weight: 500;
+    .alert-title-icon {
+      width: 32px; height: 32px; border-radius: 8px;
+      background: rgba(245,166,35,.15); display: flex; align-items: center;
+      justify-content: center; font-size: 1rem; flex-shrink: 0;
     }
-    .alert-body li::before {
-      content: '→'; font-weight: 900; color: #f5a623; flex-shrink: 0; margin-top: 1px;
+    .alert-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    }
+    .alert-item {
+      background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 11px; padding: 14px 16px;
+      display: flex; align-items: flex-start; gap: 10px;
+    }
+    .alert-item-num {
+      width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+      background: #f5a623; color: #1a1a2e;
+      font-size: .72rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .alert-item p { font-size: .84rem; color: rgba(255,255,255,.8); line-height: 1.5; font-weight: 500; }
+    .alert-item p strong { color: #fff; font-weight: 800; }
+    @media (max-width: 540px) {
+      .alert-grid { grid-template-columns: 1fr; }
+      .alert-banner { padding: 22px 20px; }
     }
 
     /* ── BOOKING DONE BANNER (hidden by default) ── */
@@ -152,28 +142,15 @@
     }
     .btn-rebook:hover { background: #15803d; transform: translateY(-2px); }
 
-    /* ── CALENDAR CARD ── */
-    .calendar-card {
+    /* ── CALENDAR ── */
+    .calendar-wrap {
       background: #fff; border-radius: 18px;
       box-shadow: 0 2px 8px rgba(0,0,0,.06), 0 8px 28px rgba(0,0,0,.08);
       overflow: hidden;
     }
-    .calendar-card__header {
-      background: linear-gradient(135deg, #0a6ef0 0%, #1ab3f8 60%, #22d6c8 100%);
-      padding: 18px 24px; display: flex; align-items: center; gap: 12px;
-    }
-    .cal-hdr-icon {
-      width: 42px; height: 42px; border-radius: 11px;
-      background: rgba(255,255,255,.2); display: flex; align-items: center;
-      justify-content: center; font-size: 1.3rem; flex-shrink: 0;
-    }
-    .cal-hdr-text strong { display: block; font-size: 1rem; font-weight: 800; color: #fff; }
-    .cal-hdr-text span { font-size: .8rem; color: rgba(255,255,255,.8); }
-    .calendar-card__body { padding: 0; }
-
     iframe#booking-frame {
       width: 100%; border: none; overflow: hidden; display: block;
-      min-height: 680px;
+      min-height: 700px;
     }
 
     /* ── FOOTER NOTE ── */
@@ -217,39 +194,29 @@
       <p>You're on the last step! Pick your time slots below. Read the instructions carefully before booking.</p>
     </div>
 
-    <!-- HOW IT WORKS -->
-    <div class="how-it-works">
-      <div class="hiw-title">How scheduling works</div>
-      <div class="hiw-steps">
-        <div class="hiw-step">
-          <div class="hiw-num">1</div>
-          <strong>Pick a time slot</strong>
-          <span>Choose a date &amp; time that works for your family</span>
-        </div>
-        <div class="hiw-step">
-          <div class="hiw-num">2</div>
-          <strong>Confirm the booking</strong>
-          <span>Fill in your info once — it'll be saved for the next booking</span>
-        </div>
-        <div class="hiw-step">
-          <div class="hiw-num">3</div>
-          <strong>Book the next slot</strong>
-          <span>The page reloads — just pick your next time. Repeat as needed!</span>
-        </div>
-      </div>
-    </div>
-
     <!-- IMPORTANT ALERT -->
     <div class="alert-banner">
-      <div class="alert-icon">⚠️</div>
-      <div class="alert-body">
-        <strong>IMPORTANT — Please read before you start booking</strong>
-        <ul>
-          <li>You can only book <strong>ONE time slot at a time</strong> — this is normal, not a bug.</li>
-          <li>After you book a slot, <strong>this page will automatically refresh</strong>. That's your cue to pick the next time slot.</li>
-          <li><strong>You do NOT need to re-enter your information</strong> every time — it's already saved. Just select a new time and hit confirm.</li>
-          <li>Repeat this process <strong>as many times as you need</strong> until all your slots are booked.</li>
-        </ul>
+      <div class="alert-title">
+        <div class="alert-title-icon">⚠️</div>
+        IMPORTANT — Read this before you start booking
+      </div>
+      <div class="alert-grid">
+        <div class="alert-item">
+          <div class="alert-item-num">1</div>
+          <p>You can only book <strong>ONE time slot at a time</strong> — this is completely normal, not a bug.</p>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-num">2</div>
+          <p>After booking, <strong>this page will automatically refresh</strong> — that's your sign to pick your next slot.</p>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-num">3</div>
+          <p><strong>You do NOT need to re-enter your info</strong> each time — it's already saved. Just pick a new time and confirm.</p>
+        </div>
+        <div class="alert-item">
+          <div class="alert-item-num">4</div>
+          <p>Repeat this <strong>as many times as you need</strong> until all your class slots are booked.</p>
+        </div>
       </div>
     </div>
 
@@ -264,22 +231,13 @@
     </div>
 
     <!-- CALENDAR EMBED -->
-    <div class="calendar-card">
-      <div class="calendar-card__header">
-        <div class="cal-hdr-icon">📅</div>
-        <div class="cal-hdr-text">
-          <strong>Available Class Times — Level 1 Nemo</strong>
-          <span>Select a date and time slot below to confirm your booking</span>
-        </div>
-      </div>
-      <div class="calendar-card__body">
-        <iframe
-          src="https://link.nilsdigital.com/widget/booking/QTdX6CLzU3cRhQ5aDG4p"
-          style="width:100%;border:none;overflow:hidden;"
-          scrolling="no"
-          id="booking-frame"
-        ></iframe>
-      </div>
+    <div class="calendar-wrap">
+      <iframe
+        src="https://link.nilsdigital.com/widget/booking/QTdX6CLzU3cRhQ5aDG4p"
+        style="width:100%;border:none;overflow:hidden;"
+        scrolling="no"
+        id="booking-frame"
+      ></iframe>
     </div>
 
     <p class="footer-note">
